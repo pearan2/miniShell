@@ -18,7 +18,7 @@ int		main()
 		dup2(fd[1], 2);
 		close(fd[0]);
 		char *cmd[] = {
-			"ls", "-l", NULL
+			"ls", "-al", NULL
 		};
 		execve("/bin/ls", cmd, environ);
 	}else{
@@ -31,7 +31,7 @@ int		main()
 	if (pid == 0)
 	{
 		//child
-		dup2(fd[0], 0);
+		dup2(fd[0], 0); // change fd[0] to stdin
 		close(fd[1]);
 		char *cmd[] = {
 			"grep", "d", NULL
