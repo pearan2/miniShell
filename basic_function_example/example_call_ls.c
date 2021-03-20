@@ -9,6 +9,7 @@ extern char **environ;
 int main(int ac, char **av)
 {
 	char **new_argv;
+    char **grep_param;
 	int idx;
     int pid;
     int fd[2];
