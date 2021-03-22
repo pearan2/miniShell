@@ -3,94 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 12:14:45 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 17:17:12 by honlee           ###   ########.fr       */
+/*   Created: 2021/02/26 12:39:34 by honlee            #+#    #+#             */
+/*   Updated: 2021/03/22 17:26:58 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniShell.h"
+#include "minishell.h"
 
-char		*bu_append(char *bu, char *buff)
+int static	ft_strlen(const char *str)
 {
-	char			*ret;
-	int				idx1;
-	int				idx2;
+	int		ret;
 
-	if (bu == 0)
-		return (ft_strdup(buff));
-	if (!(ret = malloc(ft_len(bu) + ft_len(buff) + 1)))
-		return (NULL);
-	idx1 = -1;
-	while (bu[++idx1] != 0)
-		ret[idx1] = bu[idx1];
-	idx2 = -1;
-	while (buff[++idx2] != 0)
-		ret[idx1 + idx2] = buff[idx2];
-	ret[idx1 + idx2] = 0;
-	free(bu);
+	ret = 0;
+	while (str[ret] != 0)
+		ret++;
 	return (ret);
 }
 
-int			bu_split(char **line, char *bu)
+char static	*ft_charappend(char *target, char value)
 {
-	int				nl_idx;
-	int				idx;
-	char			*temp;
+	int		idx;
+	char	*ret;
 
-	nl_idx = is_newline(bu);
-	if (!(temp = malloc(nl_idx + 1)))
-		return (-1);
-	idx = -1;
-	while (bu[++idx] != '\n')
-		temp[idx] = bu[idx];
-	temp[idx] = 0;
-	*line = temp;
-	idx = -1;
-	nl_idx++;
-	while (bu[++idx + nl_idx] != 0)
-		bu[idx] = bu[idx + nl_idx];
-	bu[idx] = 0;
-	return (1);
+	idx = 0;
+	ret = NULL;
+	if (ft_salloc(&ret, 1, ft_strlen(target) + 2) == 0)
+		return (0);
+	while (target[idx] != 0)
+	{
+		ret[idx] = target[idx];
+		idx++;
+	}
+	ret[idx] = value;
+	idx++;
+	ret[idx] = 0;
+	free(target);
+	return (ret);
 }
 
-int			return_end(int fd, char **bus, char **line, int rb)
+int	get_next_line(int fd, char **line)
 {
+	int		rb;
+	char	buff;
+
+	if (ft_salloc(line, 1, 1) == 0)
+		return (-1);
+	(*line)[0] = 0;
+	while (1)
+	{
+		rb = read(fd, &buff, 1);
+		if (rb <= 0)
+			break ;
+		if (buff == '\n')
+			return (1);
+		*line = ft_charappend(*line, buff);
+		if (*line == 0)
+			return (-1);
+	}
 	if (rb == -1)
 		return (-1);
-	if (bus[fd] != 0 && is_newline(bus[fd]) != -1)
-		return (bu_split(line, bus[fd]));
-	if (bus[fd] != 0)
-	{
-		*line = bus[fd];
-		bus[fd] = 0;
+	else
 		return (0);
-	}
-	*line = ft_strdup("");
-	return (0);
-}
-
-int			get_next_line(int fd, char **line)
-{
-	static char					*bus[OPEN_MAX];
-	char						*buff;
-	int							rb;
-
-	if (line == 0 || fd < 0 || BUFFER_SIZE <= 0)
-		return (-1);
-	if (!(buff = malloc(BUFFER_SIZE + 1)))
-		return (-1);
-	while ((rb = read(fd, buff, BUFFER_SIZE)) > 0)
-	{
-		buff[rb] = 0;
-		bus[fd] = bu_append(bus[fd], buff);
-		if (is_newline(bus[fd]) != -1)
-		{
-			free(buff);
-			return (bu_split(line, bus[fd]));
-		}
-	}
-	free(buff);
-	return (return_end(fd, bus, line, rb));
 }
