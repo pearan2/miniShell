@@ -26,7 +26,6 @@ int		main()
 		int status;
 		waitpid(pid, &status, 0);
 	}
-
 	pid = fork();
 	if (pid == 0)
 	{
