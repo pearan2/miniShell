@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_util2.c                                      :+:      :+:    :+:   */
+/*   malloc_util1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/01/06 23:01:28 by honlee           ###   ########.fr       */
+/*   Created: 2021/03/22 03:13:25 by honlee            #+#    #+#             */
+/*   Updated: 2021/03/22 13:47:26 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_split_free(char **target, unsigned int idx)
+int	ft_salloc(void**target, int type_size, int alloc_size)
 {
-	unsigned int		iter;
-
-	iter = 0;
-	while (iter < idx)
-	{
-		free(target[iter]);
-		iter++;
-	}
-	free(target);
-	return (0);
+	if (type_size < 0 || alloc_size < 0)
+		return (0);
+	(*target) = malloc(type_size * alloc_size);
+	if ((*target) == 0)
+		return (0);
+	return (1);
 }

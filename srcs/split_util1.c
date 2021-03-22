@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/01/06 21:06:53 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 13:48:25 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ unsigned int	ft_get_cnt(char *str, char *charset)
 	}
 }
 
-int				ft_is_sep(char c, char *charset)
+int	ft_is_sep(char c, char *charset)
 {
-	int idx;
+	int	idx;
 
 	idx = 0;
 	if (c == '\0')
@@ -48,9 +48,9 @@ int				ft_is_sep(char c, char *charset)
 	return (0);
 }
 
-void			ft_sc(char *dest, char *src, unsigned int s, unsigned int e)
+void	ft_sc(char *dest, char *src, unsigned int s, unsigned int e)
 {
-	unsigned int idx;
+	unsigned int	idx;
 
 	idx = 0;
 	while (s + idx < e)
@@ -77,7 +77,7 @@ unsigned int	ft_next(char *str, char *charset, unsigned int s, int is_sep)
 	}
 }
 
-char			**ft_split(char *str, char *charset)
+char	**ft_split(char *str, char *charset)
 {
 	char			**ret;
 	unsigned int	cnt;
@@ -85,8 +85,9 @@ char			**ft_split(char *str, char *charset)
 	unsigned int	s;
 	unsigned int	e;
 
+	ret = NULL;
 	cnt = ft_get_cnt(str, charset);
-	if (!(ret = (char **)malloc(sizeof(char *) * (cnt + 1))))
+	if (ft_salloc((void **)&ret, sizeof(char *), cnt + 1) == 0)
 		return (0);
 	ret[cnt] = 0;
 	idx = 0;
@@ -94,7 +95,7 @@ char			**ft_split(char *str, char *charset)
 	while (idx < cnt)
 	{
 		e = ft_next(str, charset, s, 1);
-		if (!(ret[idx] = (char *)malloc(e - s + 1)))
+		if (ft_salloc((void **)&(ret[idx]), 1, e - s + 1) == 0)
 			return (ft_split_free(ret, idx));
 		ft_sc(ret[idx], str, s, e);
 		idx++;

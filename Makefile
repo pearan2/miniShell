@@ -6,13 +6,16 @@
 #    By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/23 01:16:23 by honlee           ###   ########seoul.kr   #
+#    Updated: 2021/03/22 13:48:35 by honlee           ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 SRCDIR	=		./srcs/
 SRCNAME = 	\
-					main.c
+					main.c\
+					malloc_util1.c\
+					split_util1.c\
+					split_util2.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}
 OBJS		=	${SRCS:.c=.o}
@@ -20,6 +23,7 @@ OBJS		=	${SRCS:.c=.o}
 INCDIR		=		./includes/
 CC			=		gcc
 CF			=		-Wall -Wextra -Werror
+#CF		=		-g
 NAME		=		miniShell
 
 .c.o		:
@@ -28,6 +32,8 @@ NAME		=		miniShell
 ${NAME}		:	${OBJS} 
 					${CC} ${CF} ${OBJS} -o ${NAME}
 
+test		:	re ${OBJS}
+					${CC} ${CF} ${OBJS} -o ${NAME}
 
 fclean		:		clean
 					rm -f ${NAME}
