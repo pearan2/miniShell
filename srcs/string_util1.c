@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_util2.c                                      :+:      :+:    :+:   */
+/*   string_util1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 18:18:49 by honlee           ###   ########.fr       */
+/*   Created: 2021/03/22 17:55:54 by honlee            #+#    #+#             */
+/*   Updated: 2021/03/22 18:39:31 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniShell.h"
 
-char	**ft_split_free(char **target, unsigned int idx)
+int	ft_strcmp(char *s1, char *s2)
 {
-	unsigned int		iter;
-
-	iter = 0;
-	while (iter < idx)
+	while (1)
 	{
-		free(target[iter]);
-		iter++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		if (*s1 == '\0')
+			break ;
+		s1++;
+		s2++;
 	}
-	free(target);
 	return (0);
 }
 
-void	ft_split_free2(char *target)
+int	ft_string_append(char ***target, char *value)
 {
-	int			idx;
-
-	idx = 0;
-	if (target != NULL)
-	{
-		while (target[idx] != 0)
-			free(target[idx++]);
-		free(target);
-	}
+	
 }

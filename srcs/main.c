@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 17:20:38 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/22 17:51:44 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 
 int	main(int ac, char **av, char **env)
 {
-	t_info info;
-	info->env = env;
-	ret = environ;
-	while (ret[idx] != 0)
+	t_info	info;
+	char	*line;
+	int		ret;
+
+	ac = 0;
+	av = 0;
+	init_info(&info, env);
+	while (1)
 	{
-		printf("%s\n", ret[idx]);
-		idx++;
+		ret = get_next_line(0, &line);
+		if (ret == -1)
+			return (exit_with_strerror(line));
+		
+		free(line);
+		line = 0;
 	}
+	printf("%s", line);
+	free(line);
+	line = 0;
 	return (0);
 }

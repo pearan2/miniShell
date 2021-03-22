@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/22 13:48:35 by honlee           ###   ########seoul.kr   #
+#    Updated: 2021/03/22 17:30:25 by honlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCNAME = 	\
 					malloc_util1.c\
 					split_util1.c\
 					split_util2.c\
+					get_next_line.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}
 OBJS		=	${SRCS:.c=.o}

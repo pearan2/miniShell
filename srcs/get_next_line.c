@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 12:39:34 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 17:26:58 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/22 17:31:53 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char static	*ft_charappend(char *target, char value)
 
 	idx = 0;
 	ret = NULL;
-	if (ft_salloc(&ret, 1, ft_strlen(target) + 2) == 0)
+	if (ft_salloc((void **)&ret, 1, ft_strlen(target) + 2) == 0)
 		return (0);
 	while (target[idx] != 0)
 	{
@@ -48,7 +48,7 @@ int	get_next_line(int fd, char **line)
 	int		rb;
 	char	buff;
 
-	if (ft_salloc(line, 1, 1) == 0)
+	if (ft_salloc((void **)line, 1, 1) == 0)
 		return (-1);
 	(*line)[0] = 0;
 	while (1)

@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 17:17:44 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 18:22:23 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 typedef struct		s_info
 {
@@ -35,5 +36,12 @@ int					ft_len(char *str);
 int					is_newline(char *str);
 char				*ft_strdup(char *input);
 int					get_next_line(int fd, char **line);
+int					exit_with_strerror(void*free_target);
+void				make_info(t_info *info, char **ret);
+void				init_info(t_info *info, char **env);
+int					ft_strcmp(char *s1, char *s2);
+int					ft_string_append(char **target, char *value);
+int					return_with_free(t_info *info, int en, char **splited);
+void				ft_split_free2(char *target);
 
 #endif 
