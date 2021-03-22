@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 15:13:46 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 15:16:19 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct		s_info
 	int				fd_stdin;
 	int				fd_stdout;
 }					t_info;
+
+// 정상종료 0 에러시 1
+int					ft_built_in(t_info *info);
 
 int					ft_salloc(void **target, int type_size, int alloc_size);
 unsigned int		ft_next(char *str, char *charset, unsigned int s, int is_sep);
