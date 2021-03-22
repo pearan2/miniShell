@@ -6,19 +6,16 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 15:11:19 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 15:44:40 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
 
-int	main(void)
+int	main(int ac, char **av, char **env);
 {
-	char **ret;
-	int idx = 0;
 	t_info info;
-	info->env = environ;
+	info->env = env;
 	//ret = ft_split("this is for test!","ih");
 	ret = environ;
 	while (ret[idx] != 0)

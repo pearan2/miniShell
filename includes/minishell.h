@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 15:16:19 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 17:17:44 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct		s_info
 {
@@ -22,14 +23,17 @@ typedef struct		s_info
 	char			**opt;
 	int				fd_stdin;
 	int				fd_stdout;
+	int				is_append;
 }					t_info;
 
-// 정상종료 0 에러시 1
-int					ft_built_in(t_info *info);
-
+int					*ft_built_in(t_info *info);
 int					ft_salloc(void **target, int type_size, int alloc_size);
 unsigned int		ft_next(char *str, char *charset, unsigned int s, int is_sep);
 char				**ft_split_free(char **target, unsigned int idx);
 char				**ft_split(char *str, char *charset);
+int					ft_len(char *str);
+int					is_newline(char *str);
+char				*ft_strdup(char *input);
+int					get_next_line(int fd, char **line);
 
 #endif 
