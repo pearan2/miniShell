@@ -6,13 +6,13 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 12:39:34 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 17:31:53 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 21:30:00 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int static	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
 	int		ret;
 

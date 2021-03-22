@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 18:22:23 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 21:47:13 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
+#include <errno.h>
+#include <fcntl.h>
 
 typedef struct		s_info
 {
@@ -34,14 +37,16 @@ char				**ft_split_free(char **target, unsigned int idx);
 char				**ft_split(char *str, char *charset);
 int					ft_len(char *str);
 int					is_newline(char *str);
-char				*ft_strdup(char *input);
 int					get_next_line(int fd, char **line);
 int					exit_with_strerror(void*free_target);
-void				make_info(t_info *info, char **ret);
-void				init_info(t_info *info, char **env);
+int					make_info(t_info *info, char **ret);
+int					init_info(t_info *info, char **env);
 int					ft_strcmp(char *s1, char *s2);
-int					ft_string_append(char **target, char *value);
+int					ft_string_append(char ***target, char *value);
 int					return_with_free(t_info *info, int en, char **splited);
-void				ft_split_free2(char *target);
+void				ft_split_free2(char **target);
+char				*ft_strdup(const char *src);
+int					ft_strlen(const char *src);
+void				ft_puterror(char *p_name, int en);
 
 #endif 
