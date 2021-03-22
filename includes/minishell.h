@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 14:39:58 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/22 15:13:46 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 #include <stdlib.h>
 
-typedef struct		s_proc_info
+typedef struct		s_info
 {
+	char			**env;
 	char			*order;
 	char			**opt;
 	int				fd_stdin;
 	int				fd_stdout;
-}					t_proc_info;
+}					t_info;
 
 int					ft_salloc(void **target, int type_size, int alloc_size);
 unsigned int		ft_next(char *str, char *charset, unsigned int s, int is_sep);

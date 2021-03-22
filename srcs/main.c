@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 13:30:36 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/22 15:11:19 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int	main(void)
 {
 	char **ret;
 	int idx = 0;
-	ret = ft_split("this is for test!","ih");
+	t_info info;
+	info->env = environ;
+	//ret = ft_split("this is for test!","ih");
+	ret = environ;
 	while (ret[idx] != 0)
 	{
 		printf("%s\n", ret[idx]);
 		idx++;
 	}
-
 	return (0);
 }
