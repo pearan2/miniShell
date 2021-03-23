@@ -29,8 +29,7 @@ char static	*ft_charappend(char *target, char value)
 
 	idx = 0;
 	ret = NULL;
-	if (ft_salloc((void **)&ret, 1, ft_strlen(target) + 2) == 0)
-		return (0);
+	ft_salloc((void **)&ret, 1, ft_strlen(target) + 2);
 	while (target[idx] != 0)
 	{
 		ret[idx] = target[idx];
@@ -48,8 +47,7 @@ int	get_next_line(int fd, char **line)
 	int		rb;
 	char	buff;
 
-	if (ft_salloc((void **)line, 1, 1) == 0)
-		return (-1);
+	ft_salloc((void **)line, 1, 1);
 	(*line)[0] = 0;
 	while (1)
 	{

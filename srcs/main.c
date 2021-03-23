@@ -12,21 +12,36 @@
 
 #include "minishell.h"
 
+int		do_proc(t_info *info)
+{
+	show_info(info);
+	return (0);
+}
+
 void	do_loop(char *line, t_info *info)
 {
 	char	*s;
 	char	*e;
-
-	s = line;
 	
+	s = line;
 	while (1)
 	{
 		e = ft_find_pc(s);
 		init_info(info, e);
-		*e = 0;
-		make_info(info, ft_split(s, " "));
+		if (e != 0)
+			*e = 0;
+		if (make_info(info, ft_split(s, " ")) != 0 || do_proc(info) != 0)
+		{
+			ft_puterror("miniShell", errno);
+			free_info(info);
+			break ;
+		}
 		if (e == NULL)
-			break;
+		{
+			free_info(info);
+			break ;
+		}
+		free_info(info);
 		s = e + 1;
 	}
 }
@@ -41,7 +56,7 @@ int	main(int ac, char **av, char **env)
 	av = 0;
 	info.env = env;
 	info.is_print = 0;
-	info.is_redirct = 0;
+	info.is_redirect = 0;
 	while (1)
 	{
 		ret = get_next_line(0, &line);

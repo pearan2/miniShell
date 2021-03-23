@@ -19,29 +19,3 @@ int	exit_with_strerror(void*free_target)
 	free(free_target);
 	return (1);
 }
-
-int return_with_free(t_info *info, int en, char **splited)
-{
-	int		idx;
-
-	idx = 0;
-	if (splited != NULL)
-	{
-		while (splited[idx] != 0)
-			free(splited[idx++]);
-		free(splited);
-	}
-	idx = 0;
-	if (info->order != NULL)
-		free(info->order);
-	idx = 0;
-	if (info->opt != NULL)
-	{
-		while ((info->opt)[idx] != 0)
-			free((info->opt)[idx++]);
-		free(info->opt);
-	}
-	init_info(info);
-	ft_puterror("miniShell", en);
-	return (1);
-}

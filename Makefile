@@ -21,6 +21,7 @@ SRCNAME = 	\
 					parse_util1.c\
 					string_util1.c\
 					error_util1.c\
+					test_util1.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}
 OBJS		=	${SRCS:.c=.o}

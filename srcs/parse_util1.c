@@ -21,18 +21,39 @@ int	init_info(t_info *info, char *od)
 	ft_salloc((void **)&info->opt, sizeof(char *), 1);
 	(info->opt)[0] = NULL;
 	info->fd_stdin = -2;
-	if (info->is_redirct == 1)
-		info->fd_stdin = info->fd_stdout_r;
+	if (info->is_redirect == 1)
+		info->fd_stdin = dup(info->fd_stdout_r);
 	info->fd_stdout = fd[1];
 	info->fd_stdout_r = fd[0];
 	info->is_append = 0;
-	info->is_redirct = 0;
+	info->is_redirect = 0;
 	info->is_print = 0;
 	if (od == NULL || (od != NULL && *od == ';'))
 		info->is_print = 1;
 	if (od != NULL && *od == '|')
-		info->is_redirct = 1;
+		info->is_redirect = 1;
 	return (1);
+}
+
+void	free_info(t_info *info)
+{
+	int	idx;
+
+	if (info->fd_stdin > 2)
+		close(info->fd_stdin);
+	if (info->fd_stdout > 2)
+		close(info->fd_stdout);
+	if (info->fd_stdout_r > 2)
+		close(info->fd_stdout_r);
+	if (info->order != NULL)
+		free(info->order);
+	idx = 0;
+	if (info->opt != NULL)
+	{
+		while ((info->opt)[idx] != 0)
+			free((info->opt)[idx++]);
+		free(info->opt);
+	}
 }
 
 void	set_stdout_info(t_info *info, char *path)
@@ -45,6 +66,8 @@ void	set_stdout_info(t_info *info, char *path)
 		info->fd_stdout_r = -2;
 	}
 	info->fd_stdout = open(path, O_WRONLY | O_CREAT, 0644);
+	info->is_print = 0;
+	info->is_redirect = 1;
 }
 
 void	set_stdin_info(t_info *info, char *path)
@@ -58,8 +81,10 @@ int	make_info(t_info *info, char **ret)
 {
 	int		idx;
 	int		result;
+	int		is_order;
 
 	idx = -1;
+	is_order = 0;
 	while (ret[++idx] != 0)
 	{
 		if (ft_strcmp(ret[idx], ">") == 0)
@@ -72,12 +97,18 @@ int	make_info(t_info *info, char **ret)
 			info->is_append = 1;
 		}
 		else
-			result = ft_string_append(&(info->opt), ret[idx]);
+		{
+			if (is_order == 0)
+			{
+				is_order = 1;
+				info->order = ft_strdup(ret[idx]);
+			}
+			else
+				result = ft_string_append(&(info->opt), ret[idx]);
+		}
 		if (info->fd_stdout == -1 || info->fd_stdin == -1 || result == 1)
-			return (return_with_free(info, errno, ret));
+			return (ft_split_free2(ret));
 	}
-	info->order = info->opt[0];
-	(info->opt)++;
 	ft_split_free2(ret);
 	return (0);
 }

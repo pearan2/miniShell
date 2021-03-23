@@ -29,7 +29,7 @@ typedef struct		s_info
 	int				fd_stdout;
 	int				is_append;
 	int				fd_stdout_r;
-	int				is_redirct;
+	int				is_redirect;
 	int				is_print;
 }					t_info;
 
@@ -46,10 +46,17 @@ int					make_info(t_info *info, char **ret);
 int					init_info(t_info *info, char *od);
 int					ft_strcmp(char *s1, char *s2);
 int					ft_string_append(char ***target, char *value);
-int					return_with_free(t_info *info, int en, char **splited);
-void				ft_split_free2(char **target);
+void				free_info(t_info *info);
+int					ft_split_free2(char **target);
 char				*ft_strdup(const char *src);
 int					ft_strlen(const char *src);
 void				ft_puterror(char *p_name, int en);
 char				*ft_find_pc(char *target);
+
+
+
+/*for test */
+void	show_info(t_info *info);
+/*for test */
+
 #endif 

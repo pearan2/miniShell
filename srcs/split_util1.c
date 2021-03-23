@@ -87,16 +87,14 @@ char	**ft_split(char *str, char *charset)
 
 	ret = NULL;
 	cnt = ft_get_cnt(str, charset);
-	if (ft_salloc((void **)&ret, sizeof(char *), cnt + 1) == 0)
-		return (0);
+	ft_salloc((void **)&ret, sizeof(char *), cnt + 1);
 	ret[cnt] = 0;
 	idx = 0;
 	s = ft_next(str, charset, 0, 0);
 	while (idx < cnt)
 	{
 		e = ft_next(str, charset, s, 1);
-		if (ft_salloc((void **)&(ret[idx]), 1, e - s + 1) == 0)
-			return (ft_split_free(ret, idx));
+		ft_salloc((void **)&(ret[idx]), 1, e - s + 1);
 		ft_sc(ret[idx], str, s, e);
 		idx++;
 		s = ft_next(str, charset, e, 0);

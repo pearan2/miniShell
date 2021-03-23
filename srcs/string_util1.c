@@ -35,6 +35,7 @@ char	*ft_find_pc(char *target)
 	{
 		if (target[idx] == '|' || target[idx] == ';')
 			return (&target[idx]);
+		idx++;
 	}
 	return (NULL);
 }

@@ -26,7 +26,7 @@ char	**ft_split_free(char **target, unsigned int idx)
 	return (0);
 }
 
-void	ft_split_free2(char **target)
+int	ft_split_free2(char **target)
 {
 	int			idx;
 
@@ -37,4 +37,5 @@ void	ft_split_free2(char **target)
 			free(target[idx++]);
 		free(target);
 	}
+	return (1);
 }
