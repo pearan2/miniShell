@@ -18,7 +18,7 @@ int		main()
 		dup2(fd[1], 2);
 		close(fd[0]);
 		char *cmd[] = {
-			"ls","-al", NULL
+			"ls","-al",">" ,NULL
 		};
 		execve("/bin/ls", cmd, environ);
 	}else{
