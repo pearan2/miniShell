@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/22 15:55:04 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/23 14:19:25 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ int			ft_built_in(t_info *info)
 	int		order;
 
 	order = check_order(info->order);
+
 }
