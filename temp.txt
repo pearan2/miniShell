@@ -1,0 +1,16 @@
+Makefile
+basic_function_example
+builtIn
+forTest
+includes
+miniShell
+srcs
+temp.txt
+Makefile
+basic_function_example
+builtIn
+forTest
+includes
+miniShell
+srcs
+temp.txt

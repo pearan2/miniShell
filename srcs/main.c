@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/23 17:40:50 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/23 22:23:50 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,8 @@ int		do_proc(t_info *info)
 		return (0);
 	path = get_path(info);
 	if (path == NULL)
-		return (1);
-	else
-	{
-		proc_inner(info, path);
-		return (0);
-	}
+		path = ft_strdup(info->opt[0]);
+	proc_inner(info, path);
 	return (0);
 }
 
@@ -99,9 +95,9 @@ int	main(int ac, char **av, char **env)
 
 	ac = 0;
 	av = 0;
+	write(1, "minishell > ", 12);
 	info.env = ft_copy_string_arr(env);
-	info.is_print = 0;
-	info.is_redirect = 0;
+	info.fd_stdin = -2;
 	while (1)
 	{
 		ret = get_next_line(0, &line);
@@ -109,6 +105,7 @@ int	main(int ac, char **av, char **env)
 			return (exit_with_strerror(line));
 		do_loop(line, &info);
 		free(line);
+		write(1, "minishell > ", 12);
 	}
 	return (0);
 }

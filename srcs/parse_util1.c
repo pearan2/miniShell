@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/23 17:45:17 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/23 22:32:53 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,13 @@ int	init_info(t_info *info, char *od)
 	pipe(fd);
 	ft_salloc((void **)&info->opt, sizeof(char *), 1);
 	(info->opt)[0] = NULL;
-	info->fd_stdin = -2;
-	if (info->is_redirect == 1)
-		info->fd_stdin = dup(info->fd_stdout_r);
+	if (info->fd_stdin < 2)
+		info->fd_stdin = -2;
 	info->fd_stdout = fd[1];
 	info->fd_stdout_r = fd[0];
-	info->is_redirect = 0;
 	info->is_print = 0;
 	if (od == NULL || (od != NULL && *od == ';'))
 		info->is_print = 1;
-	if (od != NULL && *od == '|')
-		info->is_redirect = 1;
 	return (1);
 }
 
@@ -37,11 +33,14 @@ void	free_info(t_info *info)
 {
 	int	idx;
 
+	info->is_print = 0;
 	if (info->fd_stdin > 2)
 		close(info->fd_stdin);
 	if (info->fd_stdout > 2)
 		close(info->fd_stdout);
-	if (info->fd_stdout_r > 2 && info->is_redirect == 0)
+	if (info->fd_stdout_r > 2 && info->is_print == 0)
+		info->fd_stdin = dup(info->fd_stdout_r);
+	else
 		close(info->fd_stdout_r);
 	idx = 0;
 	if (info->opt != NULL)
@@ -64,9 +63,8 @@ void	set_stdout_info(t_info *info, char *path, int is_append)
 	if (is_append == 0)
 		info->fd_stdout = open(path, O_WRONLY | O_CREAT, 0644);
 	else
-		info->fd_stdout = open(path, O_APPEND);
+		info->fd_stdout = open(path, O_WRONLY | O_APPEND);
 	info->is_print = 0;
-	info->is_redirect = 1;
 }
 
 void	set_stdin_info(t_info *info, char *path)

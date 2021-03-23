@@ -14,5 +14,4 @@ void	show_info(t_info *info)
 	printf("stdout	>>	%d\n" ,info->fd_stdout);
 	printf("stdout_r	>>	%d\n" ,info->fd_stdout_r);
 	printf("is_print	>>	%d\n" ,info->is_print);
-	printf("is_redirect	>>	%d\n" ,info->is_redirect);
 }
