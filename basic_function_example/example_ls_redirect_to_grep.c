@@ -18,7 +18,7 @@ int		main()
 		dup2(fd[1], 2);
 		close(fd[0]);
 		char *cmd[] = {
-			"ls", "-al", NULL
+			"ls","-al", NULL
 		};
 		execve("/bin/ls", cmd, environ);
 	}else{
@@ -33,7 +33,7 @@ int		main()
 		dup2(fd[0], 0); // change fd[0] to stdin
 		close(fd[1]);
 		char *cmd[] = {
-			"grep", "d", NULL
+			"grep","d", NULL
 		};
 		//you should check "which grep" in terminal
 		execve("/usr/bin/grep",cmd,environ);

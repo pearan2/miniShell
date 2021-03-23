@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 21:47:13 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/23 16:39:40 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 #include <string.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 typedef struct		s_info
 {
 	char			**env;
-	char			*order;
 	char			**opt;
 	int				fd_stdin;
 	int				fd_stdout;
-	int				is_append;
 	int				fd_stdout_r;
 	int				is_redirect;
 	int				is_print;
@@ -52,8 +52,10 @@ char				*ft_strdup(const char *src);
 int					ft_strlen(const char *src);
 void				ft_puterror(char *p_name, int en);
 char				*ft_find_pc(char *target);
-
-
+char				**ft_copy_string_arr(char **target);
+char				**find_path(t_info *info);
+char				*str_append(char *target, char *value);
+int					proc_inner(t_info *info, char *path);
 
 /*for test */
 void	show_info(t_info *info);

@@ -6,7 +6,7 @@
 #    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/22 21:47:31 by honlee           ###   ########.fr        #
+#    Updated: 2021/03/23 16:28:31 by honlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCNAME = 	\
 					parse_util1.c\
 					string_util1.c\
 					error_util1.c\
+					string_util2.c\
+					proc_util1.c\
 					test_util1.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}

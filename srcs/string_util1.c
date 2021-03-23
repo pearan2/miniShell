@@ -6,11 +6,27 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:55:54 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 21:42:50 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/23 15:19:37 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	**ft_copy_string_arr(char **target)
+{
+	int		idx;
+	char	**ret;
+
+	idx = 0;
+	while (target[idx] != 0)
+		idx++;
+	ft_salloc((void**)&ret, sizeof(char *), idx + 1);
+	idx = -1;
+	while (target[++idx] != 0)
+		ret[idx] = ft_strdup(target[idx]);
+	ret[idx] = NULL;
+	return (ret);
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
