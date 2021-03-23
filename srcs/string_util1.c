@@ -26,6 +26,19 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
+char	*ft_find_pc(char *target)
+{
+	int		idx;
+
+	idx = 0;
+	while (target[idx] != 0)
+	{
+		if (target[idx] == '|' || target[idx] == ';')
+			return (&target[idx]);
+	}
+	return (NULL);
+}
+
 int	ft_string_append(char ***target, char *value)
 {
 	char **temp;
@@ -37,19 +50,14 @@ int	ft_string_append(char ***target, char *value)
 	iter = -1;
 	while ((*target)[idx] != 0)
 		idx++;
-	if (ft_salloc((void**)&temp, sizeof(char *), idx + 2) == 0)
-	{
-		free(value);
-		ft_split_free2(*target);
-		return (0);
-	}
+	ft_salloc((void**)&temp, sizeof(char *), idx + 2);
 	while (++iter < idx)
 		temp[iter] = (*target)[iter];
 	temp[iter++] = ft_strdup(value);
 	temp[iter] = 0;
 	free(*target);
 	*target = temp;
-	return (1);
+	return (0);
 }
 
 char	*ft_strdup(const char *src)
@@ -59,9 +67,9 @@ char	*ft_strdup(const char *src)
 	size_t		idx;
 
 	idx = 0;
+	ret = NULL;
 	src_size = (size_t)ft_strlen(src);
-	if (!(ret = (char *)malloc(src_size + 1)))
-		return (NULL);
+	ft_salloc((void **)&ret, 1, src_size + 1);
 	while (idx < src_size)
 	{
 		ret[idx] = src[idx];

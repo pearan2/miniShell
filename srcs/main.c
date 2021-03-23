@@ -12,32 +12,43 @@
 
 #include "minishell.h"
 
+void	do_loop(char *line, t_info *info)
+{
+	char	*s;
+	char	*e;
+
+	s = line;
+	
+	while (1)
+	{
+		e = ft_find_pc(s);
+		init_info(info, e);
+		*e = 0;
+		make_info(info, ft_split(s, " "));
+		if (e == NULL)
+			break;
+		s = e + 1;
+	}
+}
+
 int	main(int ac, char **av, char **env)
 {
 	t_info	info;
 	char	*line;
 	int		ret;
-	char	**splited;
 
+	ac = 0;
 	av = 0;
-	init_info(&info, env);
+	info.env = env;
+	info.is_print = 0;
+	info.is_redirct = 0;
 	while (1)
 	{
 		ret = get_next_line(0, &line);
 		if (ret == -1)
 			return (exit_with_strerror(line));
-		splited = ft_split(line, "|;"); // 0처리 해줘야함 나중에.
-		ac = -1;
-		while(splited[++ac] != 0)
-		{
-			make_info(&info, ft_split(splited, " "));
-			proc_order(&info);
-		}
-		ft_split_free2(splited);		
+		do_loop(line, &info);
 		free(line);
-		line = 0;
 	}
-	free(line);
-	line = 0;
 	return (0);
 }
