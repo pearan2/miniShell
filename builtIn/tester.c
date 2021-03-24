@@ -14,12 +14,17 @@ int main(int argc, char **argv, char **env)
 	(void)argv;
 	i = 0;
 	menv = env;
+	int fd_out;
+	t_info	info;
 
+	fd_out = open("./env_test",O_RDWR);
+	info.env = env;
+/*
 	char *out;
 	ft_salloc((void**)&out, sizeof(char), 5);
 	char **out;
 	ft_salloc((void**)&out, sizeof(char *), 7);
-	ft_salloc((void&&)&out[1], sizeof(char), 5);	
+	ft_salloc((void&&)&out[1], sizeof(char), 5);	*/
 
 while(1)
 {
@@ -49,7 +54,17 @@ while(1)
 				len = ft_strlen(menv[i]);
 				write(1, menv[i], len);
 				write(1, "\n", 1);
-
+				info.opt = (char **)malloc(sizeof(char *) * 2);
+				info.opt[0] = (char *)malloc(sizeof(char) * 4);
+				info.opt[0][0] = 'e';
+				info.opt[0][1] = 'n';
+				info.opt[0][2] = 'v';
+				info.opt[0][3] = '\0';
+				info.opt[1] = 0;
+				info.fd_stdout = fd_out;
+			   	ft_built_in(&info);	
+				free(info.opt[0]);
+				free(info.opt);
 				if (menv[i][0] == 'A' && menv[i][1] == '=')
 				{
 					menv[i][2] = '9';
