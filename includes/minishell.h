@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 13:08:20 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/24 15:24:53 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int					proc_inner(t_info *info, char *path);
 int					check_quotes(char *line);
 char				**ft_split_input(char *line);
 char    			*str_trim_free(char **tg);
+char				*ft_string_trim_free(char **line);
+int					get_char(char **line);
 
 /*for test */
 void	show_info(t_info *info);

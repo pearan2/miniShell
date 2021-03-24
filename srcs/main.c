@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 12:42:41 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/24 15:21:31 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void	do_loop(char *line, t_info *info)
 {
 	char	*s;
 	char	*e;
-	
+
+	if (*line == 0)
+		return ;
 	s = line;
 	while (1)
 	{
@@ -98,11 +100,14 @@ int	main(int ac, char **av, char **env)
 	write(1, "minishell > ", 12);
 	info.env = ft_copy_string_arr(env);
 	info.fd_stdin = -2;
+	line = ft_strdup("");
 	while (1)
 	{
-		ret = get_next_line(0, &line);
+		ret = get_char(&line);
+		//ret = get_next_line(0, &line);
 		if (ret == -1)
 			return (exit_with_strerror(line));
+		ft_string_trim_free(&line);
 		if (check_quotes(line) != 0)
 			write(2, "quotes error\n", ft_strlen("quotes error\n"));
 		else

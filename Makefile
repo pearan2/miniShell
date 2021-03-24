@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/24 13:08:46 by honlee           ###   ########seoul.kr   #
+#    Updated: 2021/03/24 15:25:13 by honlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCNAME = 	\
 					error_util1.c\
 					string_util2.c\
 					proc_util1.c\
+					get_char_util1.c\
 					test_util1.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}

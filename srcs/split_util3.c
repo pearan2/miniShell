@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   split_util3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 13:27:52 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/24 15:16:06 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*ft_string_trim_free(char **line)
+{
+	int		s;
+	int		e;
+	char	*ret;
+	int		idx;
+
+	e = ft_strlen(*line) - 1;
+	s = 0;
+	while ((*line)[s] == ' ')
+		s++;
+	while ((*line)[e] == ' ' && e >= 0)
+		e--;
+	if (e < 0)
+		ret = ft_strdup("");
+	else
+	{
+		ft_salloc((void**)&ret, 1, e - s + 2);
+		idx = -1;
+		while (s + ++idx <= e)
+			ret[idx] = (*line)[s + idx];
+		ret[idx] = 0;
+	}
+	free(*line);
+	*line = ret;
+	return (ret);
+}
 
 void	ft_string_append_se(char ***tg, char *line, int s, int e)
 {
@@ -35,7 +63,6 @@ char	**ft_split_input(char *line)
 	int		s;
 	int		e;
 	char	f_value;
-	int		is_first;
 
 	ret = NULL;
 	ft_salloc((void**)&ret, sizeof(char *), 1);
@@ -43,13 +70,13 @@ char	**ft_split_input(char *line)
 	s = 0;
 	e = 0;
 	f_value = ' ';
-	is_first = 0;
-	while (line[++e] != 0)
+	while (1)
 	{
-		if (line[e] == f_value)
+		if (line[e] == f_value || line[e] == 0)
 		{
 			ft_string_append_se(&ret, line, s, e);
-			is_first = 1;
+			if (line[e] == 0)
+				break ;
 			s = e + 1;
 			if (line[s] == 0)
 				break ;
@@ -58,10 +85,9 @@ char	**ft_split_input(char *line)
 			f_value = line[s];
 			if (!(f_value == '\'' || f_value == '\"'))
 				f_value = ' ';
-			e = s + 1;
+			e = s;
 		}
+		e++;
 	}
-	if (is_first == 0)
-		ft_string_append_se(&ret, line, s, e);
 	return (ret);
 }
