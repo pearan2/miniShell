@@ -6,7 +6,11 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/03/24 15:24:53 by honlee           ###   ########.fr       */
+=======
+/*   Updated: 2021/03/24 17:10:00 by junhypar         ###   ########.fr       */
+>>>>>>> ce30954ca6138340a680268e601674dcce036a4a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +68,9 @@ int					get_char(char **line);
 /*for test */
 void	show_info(t_info *info);
 /*for test */
+
+/**/
+void				ft_env(t_info *info);
+/**/
 
 #endif 

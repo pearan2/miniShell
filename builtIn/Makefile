@@ -5,6 +5,8 @@ SRCS = tester.c \
 	   ft_strdup.c \
 	   ft_strlen.c \
 	   \
+	   ft_built_in.c\
+	   ft_env.c\
 
 
 OBJS = ${SRCS:.c=.o}

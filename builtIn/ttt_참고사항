@@ -1,0 +1,9 @@
+typedef struct		s_info
+{
+	char			**env;
+	char			**opt;
+	int				fd_stdin;
+	int				fd_stdout; //무조건 여기에 출력값
+	int				fd_stdout_r; //읽기전용
+	int				is_print;
+}		

@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/23 14:19:25 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/24 17:08:54 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ int			check_order(char *str)
 		return (-1);
 }
 
-int			ft_built_in(t_info *info)
+int			*ft_built_in(t_info *info)
 {
 	int		order;
 
-	order = check_order(info->order);
-
+	order = check_order(info->opt[0]);
+	if (order == 6)
+	{
+		ft_env(info);
+	}
+	return(0);
 }
