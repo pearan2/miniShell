@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 15:21:31 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/24 17:46:34 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	do_loop(char *line, t_info *info)
 		}
 		free_info(info);
 		s = e + 1;
+		while (*s == ' ')
+			s++;
 	}
 }
 
@@ -103,8 +105,8 @@ int	main(int ac, char **av, char **env)
 	line = ft_strdup("");
 	while (1)
 	{
-		ret = get_char(&line);
-		//ret = get_next_line(0, &line);
+		//ret = get_char(&line);
+		ret = get_next_line(0, &line);
 		if (ret == -1)
 			return (exit_with_strerror(line));
 		ft_string_trim_free(&line);
