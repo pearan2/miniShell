@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 17:46:34 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/24 17:50:28 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	do_loop(char *line, t_info *info)
 	{
 		e = ft_find_pc(s);
 		init_info(info, e);
+		//다시 둡해서 트림처리 필요함. ft_string_trim_free 활용하면 될듯.
 		if (e != 0)
 			*e = 0;
 		if (make_info(info, ft_split_input(s)) != 0 || do_proc(info) != 0)
@@ -86,8 +87,6 @@ void	do_loop(char *line, t_info *info)
 		}
 		free_info(info);
 		s = e + 1;
-		while (*s == ' ')
-			s++;
 	}
 }
 
