@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 13:08:20 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/24 17:10:00 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,9 @@ char    			*str_trim_free(char **tg);
 /*for test */
 void	show_info(t_info *info);
 /*for test */
+
+/**/
+void				ft_env(t_info *info);
+/**/
 
 #endif 
