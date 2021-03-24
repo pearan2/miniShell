@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/23 22:23:50 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/24 12:42:41 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	do_loop(char *line, t_info *info)
 		init_info(info, e);
 		if (e != 0)
 			*e = 0;
-		if (make_info(info, ft_split(s, " ")) != 0 || do_proc(info) != 0)
+		if (make_info(info, ft_split_input(s)) != 0 || do_proc(info) != 0)
 		{
 			ft_puterror("miniShell", errno);
 			free_info(info);
@@ -103,7 +103,10 @@ int	main(int ac, char **av, char **env)
 		ret = get_next_line(0, &line);
 		if (ret == -1)
 			return (exit_with_strerror(line));
-		do_loop(line, &info);
+		if (check_quotes(line) != 0)
+			write(2, "quotes error\n", ft_strlen("quotes error\n"));
+		else
+			do_loop(line, &info);
 		free(line);
 		write(1, "minishell > ", 12);
 	}

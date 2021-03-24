@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/23 22:32:53 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/24 13:24:27 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ int	make_info(t_info *info, char **ret)
 	while (ret[++idx] != 0)
 	{
 		if (ft_strcmp(ret[idx], ">") == 0)
-			set_stdout_info(info, ret[++idx], 0);
+			set_stdout_info(info, str_trim_free(&ret[++idx]), 0);
 		else if (ft_strcmp(ret[idx], "<") == 0)
-			set_stdin_info(info, ret[++idx]);
+			set_stdin_info(info, str_trim_free(&ret[++idx]));
 		else if (ft_strcmp(ret[idx], ">>") == 0)
-			set_stdout_info(info, ret[++idx], 1);
+			set_stdout_info(info, str_trim_free(&ret[++idx]), 1);
 		else
-			result = ft_string_append(&(info->opt), ret[idx]);
+			result = ft_string_append(&(info->opt), str_trim_free(&ret[idx]));
 		if (info->fd_stdout == -1 || info->fd_stdin == -1 || result == 1)
 			return (ft_split_free2(ret));
 	}

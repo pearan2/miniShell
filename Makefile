@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
+#    By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/23 16:28:31 by honlee           ###   ########.fr        #
+#    Updated: 2021/03/24 13:08:46 by honlee           ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,12 @@ SRCNAME = 	\
 					malloc_util1.c\
 					split_util1.c\
 					split_util2.c\
+					split_util3.c\
 					get_next_line.c\
 					exit_util1.c\
 					parse_util1.c\
+					parse_util2.c\
+					parse_util3.c\
 					string_util1.c\
 					error_util1.c\
 					string_util2.c\
