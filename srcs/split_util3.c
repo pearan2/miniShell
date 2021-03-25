@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 14:35:13 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 16:23:58 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ char	**ft_split_input2(char *line)
 	int		flag;
 	char	f_va;
 	char	**ret;
+	char	*save;
 
+	save = line;
 	temp = ft_strdup("");
 	idx = -1;
 	flag = 0;
@@ -86,7 +88,7 @@ char	**ft_split_input2(char *line)
 				idx = -1; // 인덱스 초기화
 			}
 			else // 따옴표를 찾는중이다.
-				ft_charappend2(&temp, line[idx]); // 집어넣는다.
+				ft_charappend2(&temp, line[idx]);// 집어넣는다.
 		else
 		{
 			ft_charappend2(&temp, line[idx]); // 일단 집어넣는다.
@@ -111,6 +113,7 @@ char	**ft_split_input2(char *line)
 	if (ft_strlen(temp) > 0)
 		ft_string_append(&ret, temp);
 	free(temp);
+	free(save);
 	return (ret);
 }
 

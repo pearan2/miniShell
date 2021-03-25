@@ -6,23 +6,26 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 14:42:25 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 17:49:36 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
-#include <termios.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <string.h>
+# include <errno.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+
+# include <term.h>
+# include <sys/ioctl.h>
+# include <termios.h>
 
 # define BACKSPACE 127
 # define EOF_KEY 4
@@ -41,6 +44,7 @@ typedef struct		s_info
 	int				fd_stdout_r;
 	int				is_print;
 	int				built_result_num;
+	
 }					t_info;
 
 int					*ft_built_in(t_info *info);
@@ -77,6 +81,7 @@ void				do_term_loop(char **line);
 int					is_printable(char c);
 char 				*ft_charappend2(char **target, char value);
 char				**ft_split_input2(char *line);
+void				get_cursor_position(int *rows, int *cols);
 
 /*for test */
 void	show_info(t_info *info);
