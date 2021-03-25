@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 17:34:30 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 13:52:54 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_info
 	int				fd_stdout;
 	int				fd_stdout_r;
 	int				is_print;
+	int				built_result_num;
 }					t_info;
 
 int					*ft_built_in(t_info *info);
@@ -67,6 +68,7 @@ void	show_info(t_info *info);
 
 /**/
 void				ft_env(t_info *info);
+void				ft_pwd(t_info *info);
 /**/
 
 #endif 
