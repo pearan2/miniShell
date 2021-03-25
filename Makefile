@@ -27,6 +27,7 @@ SRCNAME = 	\
 					string_util2.c\
 					proc_util1.c\
 					get_char_util1.c\
+					termios_util1.c\
 					test_util1.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}

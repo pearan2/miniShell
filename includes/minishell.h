@@ -21,6 +21,16 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
+#include <termios.h>
+
+# define BACKSPACE 127
+# define EOF_KEY 4
+# define LEFT_ARROW 4479771
+# define RIGHT_ARROW 4414235
+# define UP_ARROW 4283163
+# define DOWN_ARROW 4348699
+# define DEL_BUF "\b \b"
 
 typedef struct		s_info
 {
@@ -60,6 +70,11 @@ char				**ft_split_input(char *line);
 char    			*str_trim_free(char **tg);
 char				*ft_string_trim_free(char **line);
 int					get_char(char **line);
+char				*str_trim_dup(char *line);
+void				init_term(void);
+void				do_term_loop(char **line);
+int					is_printable(char c);
+char 				*ft_charappend2(char **target, char value);
 
 /*for test */
 void	show_info(t_info *info);
