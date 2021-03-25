@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 13:52:54 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/25 13:54:53 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	show_info(t_info *info);
 /**/
 void				ft_env(t_info *info);
 void				ft_pwd(t_info *info);
+void				ft_exit(t_info *info);
 /**/
 
 #endif 
