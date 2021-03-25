@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 23:33:16 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 01:58:39 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ int	ft_atoi(const char *str)
 void	putchar_and_save(char c, t_list_info *list_info, char *content)
 {
 	write(1, &c, 1);
-	ft_lstadd_back(list_info->head, ft_lstnew(content));
+	ft_lstadd_back(list_info->head, ft_lstnew(ft_strdup(content)));
+	list_info->pos++;
+	list_info->size++;
 	return ;
 }
 
@@ -77,9 +79,9 @@ void	do_term_loop(char **line, t_list_info *list_info)
 				term_backspace(col_max, line);
 		}
 		else if (buff == UP_ARROW)
-			write(0, "UP", 2);
+			term_uparrow(col_max, o_col, line, list_info);
 		else if (buff == DOWN_ARROW)
-			write(0, "DOWN", 4);
+			term_downarrow(col_max, o_col, line, list_info);
 		else
 		{
 			if (is_printable((char)buff) == 1)

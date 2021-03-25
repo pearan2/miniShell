@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 23:31:51 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 01:58:45 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_list_info
 {
 	t_list			**head;
 	int				pos;
+	int				size;
 }					t_list_info;
 
 int					*ft_built_in(t_info *info);
@@ -96,11 +97,14 @@ void				get_cursor_position(int *rows, int *cols);
 int					ft_nbrlen(int value);
 int					ft_atoi(const char *str);
 void				term_backspace(int col_max, char **line);
+void				term_uparrow(int col_max, int o_col, char **line, t_list_info *list_info);
+void				term_downarrow(int col_max, int o_col, char **line, t_list_info *list_info);
 int					putchar_tc(int tc);
 int					get_win_col(void);
 void				ft_charbackspace(char **line);
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_back(t_list **lst, t_list *new);
+char				*ft_lst_getdata(t_list_info *list_info);
 
 /*for test */
 void	show_info(t_info *info);

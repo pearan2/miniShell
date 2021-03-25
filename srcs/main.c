@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 23:32:12 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 01:35:42 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ int	main(int ac, char **av, char **env)
 	ac = 0;
 	av = 0;
 	ft_salloc((void**)&(list_info.head), sizeof(t_list *), 1);
+	*(list_info.head) = 0;
+	list_info.pos = -1;
+	list_info.size = 0;
 	write(1, "minishell > ", 12);
 	info.env = ft_copy_string_arr(env);
 	info.fd_stdin = -2;

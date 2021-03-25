@@ -6,13 +6,13 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 23:14:48 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 23:16:01 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 01:35:31 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list		*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list		*ret;
 
@@ -23,7 +23,7 @@ t_list		*ft_lstnew(void *content)
 	return (ret);
 }
 
-void		ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list		*head;
 
@@ -40,3 +40,14 @@ void		ft_lstadd_back(t_list **lst, t_list *new)
 	head->next = new;
 }
 
+char	*ft_lst_getdata(t_list_info *list_info)
+{
+	int		idx;
+	t_list	*list;
+
+	idx = -1;
+	list = *(list_info->head);
+	while (++idx < list_info->pos)
+		list = list->next;
+	return (list->content);	
+}
