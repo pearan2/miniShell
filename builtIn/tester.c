@@ -7,7 +7,8 @@ int main(int argc, char **argv, char **env)
 	int		status;
 	char	**menv;
 	char	*out;
-
+	char	*out2;
+	int		built_flag;
 	char	*print;
 
 	int i;
@@ -45,8 +46,6 @@ int main(int argc, char **argv, char **env)
 	}
 	env[i] = 0;
 
-
-	fd_out = open("./stdout",O_RDWR);
 /*
 	char *out;
 	ft_salloc((void**)&out, sizeof(char), 5);
@@ -54,7 +53,7 @@ int main(int argc, char **argv, char **env)
 	ft_salloc((void**)&out, sizeof(char *), 7);
 	ft_salloc((void*)&out[1], sizeof(char), 5);	*/
 
-while(1)
+/*while(1)
 {
 	pid	= fork();
 	if (pid > 0)
@@ -144,7 +143,119 @@ while(1)
 		exit(1);
 	}
 
-}
+}*/
+
+
+	while(1)
+	{
+		built_flag = 0;
+
+		write(1, "input = ",8);
+		gnl = get_next_line(0,&out);
+
+		write(1, "\n", 1);
+		if (out[0] == 'e' && out[1] == 'n' && out[2] == 'v')
+		{
+			i = 0;
+			
+			fd_out = open("./stdout",O_TRUNC|O_RDWR);
+			info.opt = (char **)malloc(sizeof(char *) * 2);
+			info.opt[0] = (char *)malloc(sizeof(char) * 4);
+			info.opt[0][0] = 'e';
+			info.opt[0][1] = 'n';
+			info.opt[0][2] = 'v';
+			info.opt[0][3] = '\0';
+			info.opt[1] = 0;
+			info.fd_stdout = fd_out;
+		   	ft_built_in(&info);	
+			free(info.opt[0]);
+			free(info.opt);
+			close(fd_out);
+			built_flag = 2;
+		}
+		else if (out[0] == 'p' && out[1] == 'w' && out[2] == 'd')
+		{
+			i = 0;
+			
+			fd_out = open("./stdout",O_TRUNC|O_RDWR);
+			info.opt = (char **)malloc(sizeof(char *) * 2);
+			info.opt[0] = (char *)malloc(sizeof(char) * 4);
+			info.opt[0][0] = 'p';
+			info.opt[0][1] = 'w';
+			info.opt[0][2] = 'd';
+			info.opt[0][3] = '\0';
+			info.opt[1] = 0;
+			info.fd_stdout = fd_out;
+		   	ft_built_in(&info);	
+			free(info.opt[0]);
+			free(info.opt);
+			close(fd_out);
+			built_flag = 2;
+		}
+		else if (out[0] == 'e' && out[1] == 'x' && out[2] == 'i' && out[3] == 't')
+		{
+			i = 1;
+			
+			fd_out = open("./stdout",O_TRUNC|O_RDWR);
+			info.opt = (char **)malloc(sizeof(char *) * 4);
+			info.opt[0] = (char *)malloc(sizeof(char) * 5);
+			info.opt[0][0] = 'e';
+			info.opt[0][1] = 'x';
+			info.opt[0][2] = 'i';
+			info.opt[0][3] = 't';
+			info.opt[0][4] = '\0';
+			info.opt[1] = 0;
+			info.opt[2] = 0;
+			info.opt[3] = 0;
+
+			while(i < 3)
+			{
+				gnl = get_next_line(0,&out2);
+				if (out2[0] == '\0');
+				{
+					free(out2);
+					break;
+				}
+				info.opt[i] = out2;
+				i++;
+			}
+			info.fd_stdout = fd_out;
+		   	ft_built_in(&info);
+			i = 0;
+			while(i < 4)
+			{
+				if (info.opt[i])
+					free(info.opt[i]);
+				else
+					break;
+				i++;
+			}
+			free(info.opt);
+			close(fd_out);
+			built_flag = 2;
+		}
+		if (built_flag == 2)
+		{
+			write(1, "\n", 1);
+			fd_out = open("./stdout",O_RDONLY);
+			write(1, "stdout::\n",9);
+			while (get_next_line(fd_out,&print) > 0)
+			{
+				len = ft_strlen(print);
+				write(1, print, len);
+				write(1, "\n", 1);
+				free(print);
+			}
+			len = ft_strlen(print);
+			write(1, print, len);
+			write(1, "\n", 1);
+			free(print);
+			close(fd_out);
+		}
+
+		free(out);
+	}
+
 	i = 0;
 	while(info.env[i])
 	{
@@ -152,4 +263,5 @@ while(1)
 		i++;
 	}
 	free(info.env);
+	return(0);
 }

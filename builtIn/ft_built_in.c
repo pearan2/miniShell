@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/25 11:02:05 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/25 11:19:45 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int			*ft_built_in(t_info *info)
 		ft_pwd(info);
 	else if (order == 6)
 		ft_env(info);
+	else if (order == 8)
+		ft_exit(info);
 	return(0);
 }
