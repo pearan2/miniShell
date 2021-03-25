@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/25 11:19:45 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/25 13:53:24 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,34 @@ int			check_order(char *str)
 		return (-1);
 }
 
-int			*ft_built_in(t_info *info)
+static void	do_child(t_info *info, int order)
 {
-	int		order;
-
-	order = check_order(info->opt[0]);
 	if (order == 3)
 		ft_pwd(info);
 	else if (order == 6)
 		ft_env(info);
 	else if (order == 8)
 		ft_exit(info);
+}
+
+int			*ft_built_in(t_info *info)
+{
+	int		order;
+	pid_t	pid;
+	pid_t	pwait;
+	int		fd[2];
+	int		status;
+
+	order = check_order(info->opt[0]);
+	pid = fork();
+	if (pid > 0)
+	{
+		pwait = wait(&status);
+
+	}
+	else if (pid == 0)
+		do_child;
+	else
+		return (1);
 	return(0);
 }
