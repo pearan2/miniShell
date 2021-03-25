@@ -6,11 +6,11 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/24 17:08:54 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/25 11:19:45 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 int			check_order(char *str)
 {
@@ -37,9 +37,11 @@ int			*ft_built_in(t_info *info)
 	int		order;
 
 	order = check_order(info->opt[0]);
-	if (order == 6)
-	{
+	if (order == 3)
+		ft_pwd(info);
+	else if (order == 6)
 		ft_env(info);
-	}
+	else if (order == 8)
+		ft_exit(info);
 	return(0);
 }
