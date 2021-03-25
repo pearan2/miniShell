@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 17:50:19 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 14:35:13 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,59 @@ void	ft_string_append_se(char ***tg, char *line, int s, int e)
 
 char	**ft_split_input2(char *line)
 {
-	return 0;
+	char	*temp;
+	int		idx;
+	int		flag;
+	char	f_va;
+	char	**ret;
+
+	temp = ft_strdup("");
+	idx = -1;
+	flag = 0;
+	f_va = 0;
+	ret = NULL;
+	ft_salloc((void**)&ret, sizeof(char *), 1);
+	ret[0] = NULL;
+	while (line[++idx] != 0)
+	{
+		if (line[idx] == ' ') // 분리해야하는가?
+			if (flag == 0) // 따옴표가 세팅되어 있지 않다.
+			{
+				ft_string_append(&ret, temp); // 리턴에 넣어줌.
+				free(temp);
+				temp = ft_strdup("");
+				line += idx; // line[idx] 가 가르키던 방향
+				while (*line == ' ') // 공백이 아닌게 올때까지 밀어준다.
+					line++;
+				idx = -1; // 인덱스 초기화
+			}
+			else // 따옴표를 찾는중이다.
+				ft_charappend2(&temp, line[idx]); // 집어넣는다.
+		else
+		{
+			ft_charappend2(&temp, line[idx]); // 일단 집어넣는다.
+			if (line[idx] == '\'' || line[idx] == '\"')
+			{
+				if (flag == 0)
+				{
+					flag = 1;
+					f_va = line[idx];
+				}
+				else // flag == 1
+				{
+					if (f_va == line[idx])
+					{
+						flag = 0;
+						f_va = 0;
+					}
+				}
+			}
+		}
+	}
+	if (ft_strlen(temp) > 0)
+		ft_string_append(&ret, temp);
+	free(temp);
+	return (ret);
 }
 
 char	**ft_split_input(char *line)

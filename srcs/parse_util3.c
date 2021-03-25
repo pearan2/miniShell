@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:45:40 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 13:15:26 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/25 14:34:46 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,30 @@ char	*str_trim_dup(char *line)
 	return (ft_string_trim_free(&temp));
 }
 
-char    *str_trim_free(char **tg)
+char	*str_trim_free(char **tg)
 {
-    char    trim_value;
-    char    *ret;
-    int     idx1;
-    int     idx2;
+	char	*ret;
+	int		idx;
+	char	f_val;
 
-    if (!((*tg)[0] == ' ' || (*tg)[0] == '\'' || (*tg)[0] == '\"'))
-        return (*tg);
-    trim_value = (*tg)[0];
-    ft_salloc((void**)&ret, 1, ft_strlen(*tg) - 1);
-    idx1 = 0;
-    idx2 = -1;
-    while ((*tg)[++idx2] != 0)
-    {
-        if ((*tg)[idx2] != trim_value)
-        {
-            ret[idx1] = (*tg)[idx2];
-            idx1++;
-        }
-    }
-    ret[idx1] = 0;
-    free(*tg);
-    *tg = ret;
-    return (ret);
+	ret = ft_strdup("");
+	idx = -1;
+	f_val = 0;
+	while ((*tg)[++idx] != 0)
+	{
+		if ((*tg)[idx] == '\'' || (*tg)[idx] == '\"')
+		{
+			if (f_val == 0)
+				f_val = (*tg)[idx];
+			else if (f_val == (*tg)[idx])
+				f_val = 0;
+			else
+				ft_charappend2(&ret, (*tg)[idx]);
+		}
+		else
+			ft_charappend2(&ret, (*tg)[idx]);
+	}
+	free(*tg);
+	*tg = ret;
+	return (ret);
 }

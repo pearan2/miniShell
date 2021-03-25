@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 17:34:30 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 14:24:03 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void				init_term(void);
 void				do_term_loop(char **line);
 int					is_printable(char c);
 char 				*ft_charappend2(char **target, char value);
+char				**ft_split_input2(char *line);
 
 /*for test */
 void	show_info(t_info *info);

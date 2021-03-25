@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 17:50:28 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 14:23:49 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	do_loop(char *line, t_info *info)
 		init_info(info, e);
 		if (e != 0)
 			*e = 0;
-		if (make_info(info, ft_split_input(str_trim_dup(s))) != 0 || do_proc(info) != 0)
+		if (make_info(info, ft_split_input2(str_trim_dup(s))) != 0 || do_proc(info) != 0)
 		{
 			ft_puterror("miniShell", errno);
 			free_info(info);
