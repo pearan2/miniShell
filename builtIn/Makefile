@@ -23,6 +23,8 @@ SRCS = ${addprefix ${SRCDIR}, ${SRCNAME}}\
 	   ft_built_in.c\
 	   ft_env.c\
 	   ft_pwd.c\
+	   ft_exit.c\
+	   ft_my_atoi_itoa.c\
 
 
 OBJS = ${SRCS:.c=.o}

@@ -6,4 +6,6 @@ typedef struct		s_info
 	int				fd_stdout; //무조건 여기에 출력값
 	int				fd_stdout_r; //읽기전용
 	int				is_print;
-}		
+}
+
+pipe로 작업할때 fd[0]는 무조건 읽기전용 fd[1]은 무조건쓰기전용 fd[1]에적어두고 fd[0]으로 읽는다. 쓰기전용 파일에 작업시 글마지막에는 무조건 \0이나 \n으로 마무리점임을 알려줘야한ㄴ다

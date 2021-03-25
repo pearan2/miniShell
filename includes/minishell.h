@@ -6,7 +6,11 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/03/25 17:49:36 by honlee           ###   ########.fr       */
+=======
+/*   Updated: 2021/03/25 15:39:51 by junhypar         ###   ########.fr       */
+>>>>>>> e3187c5b2b320ae19e208297cb474161a218c787
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +92,12 @@ void	show_info(t_info *info);
 /*for test */
 
 /**/
-void				ft_env(t_info *info);
-void				ft_pwd(t_info *info);
-void				ft_exit(t_info *info);
+void				ft_env(t_info *info, int fd[2]);
+void				ft_pwd(t_info *info, int fd[2]);
+void				ft_exit(t_info *info, int fd[2]);
+
+long				my_atoi(char *str);
+char				*my_itoa(long num);
 /**/
 
 #endif 

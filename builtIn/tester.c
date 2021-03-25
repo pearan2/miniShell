@@ -21,7 +21,7 @@ int main(int argc, char **argv, char **env)
 	int fd_out;
 	t_info	info;
 
-
+	info.built_result_num = 0;
 	i = 0;
 	while(env[i])
 		i++;
@@ -207,11 +207,10 @@ int main(int argc, char **argv, char **env)
 			info.opt[1] = 0;
 			info.opt[2] = 0;
 			info.opt[3] = 0;
-
 			while(i < 3)
 			{
 				gnl = get_next_line(0,&out2);
-				if (out2[0] == '\0');
+				if (out2[0] == '\0')
 				{
 					free(out2);
 					break;
@@ -238,7 +237,7 @@ int main(int argc, char **argv, char **env)
 		{
 			write(1, "\n", 1);
 			fd_out = open("./stdout",O_RDONLY);
-			write(1, "stdout::\n",9);
+			write(1, "stdout::\n\n",9);
 			while (get_next_line(fd_out,&print) > 0)
 			{
 				len = ft_strlen(print);
