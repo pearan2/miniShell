@@ -12,6 +12,14 @@
 
 #include "minishell.h"
 
+char	*str_trim_dup(char *line)
+{
+	char *temp;
+
+	temp = ft_strdup(line);
+	return (ft_string_trim_free(&temp));
+}
+
 char    *str_trim_free(char **tg)
 {
     char    trim_value;

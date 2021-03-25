@@ -22,7 +22,28 @@ int	ft_strlen(const char *str)
 	return (ret);
 }
 
-char static	*ft_charappend(char *target, char value)
+char *ft_charappend2(char **target, char value)
+{
+	int		idx;
+	char	*ret;
+
+	idx = 0;
+	ret = NULL;
+	ft_salloc((void **)&ret, 1, ft_strlen(*target) + 2);
+	while ((*target)[idx] != 0)
+	{
+		ret[idx] = (*target)[idx];
+		idx++;
+	}
+	ret[idx] = value;
+	idx++;
+	ret[idx] = 0;
+	free(*target);
+	*target = ret;
+	return (ret);
+}
+
+char *ft_charappend(char *target, char value)
 {
 	int		idx;
 	char	*ret;

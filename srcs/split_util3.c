@@ -57,6 +57,11 @@ void	ft_string_append_se(char ***tg, char *line, int s, int e)
 	free(temp);
 }
 
+char	**ft_split_input2(char *line)
+{
+	return 0;
+}
+
 char	**ft_split_input(char *line)
 {
 	char	**ret;

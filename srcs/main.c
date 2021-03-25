@@ -71,10 +71,9 @@ void	do_loop(char *line, t_info *info)
 	{
 		e = ft_find_pc(s);
 		init_info(info, e);
-		//다시 둡해서 트림처리 필요함. ft_string_trim_free 활용하면 될듯.
 		if (e != 0)
 			*e = 0;
-		if (make_info(info, ft_split_input(s)) != 0 || do_proc(info) != 0)
+		if (make_info(info, ft_split_input(str_trim_dup(s))) != 0 || do_proc(info) != 0)
 		{
 			ft_puterror("miniShell", errno);
 			free_info(info);
@@ -101,13 +100,11 @@ int	main(int ac, char **av, char **env)
 	write(1, "minishell > ", 12);
 	info.env = ft_copy_string_arr(env);
 	info.fd_stdin = -2;
-	line = ft_strdup("");
+	init_term();
 	while (1)
 	{
-		//ret = get_char(&line);
-		ret = get_next_line(0, &line);
-		if (ret == -1)
-			return (exit_with_strerror(line));
+		line = ft_strdup("");
+		do_term_loop(&line);
 		ft_string_trim_free(&line);
 		if (check_quotes(line) != 0)
 			write(2, "quotes error\n", ft_strlen("quotes error\n"));
