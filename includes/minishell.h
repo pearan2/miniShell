@@ -6,11 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/03/25 17:49:36 by honlee           ###   ########.fr       */
-=======
-/*   Updated: 2021/03/25 15:39:51 by junhypar         ###   ########.fr       */
->>>>>>> e3187c5b2b320ae19e208297cb474161a218c787
+/*   Updated: 2021/03/25 23:31:51 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +44,19 @@ typedef struct		s_info
 	int				fd_stdout_r;
 	int				is_print;
 	int				built_result_num;
-	
 }					t_info;
+
+typedef struct		s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
+typedef struct		s_list_info
+{
+	t_list			**head;
+	int				pos;
+}					t_list_info;
 
 int					*ft_built_in(t_info *info);
 int					ft_salloc(void **target, int type_size, int alloc_size);
@@ -80,12 +87,20 @@ char    			*str_trim_free(char **tg);
 char				*ft_string_trim_free(char **line);
 int					get_char(char **line);
 char				*str_trim_dup(char *line);
-void				init_term(void);
-void				do_term_loop(char **line);
+void				init_term(struct termios *save, struct termios *setting);
+void				do_term_loop(char **line, t_list_info *list_info);
 int					is_printable(char c);
 char 				*ft_charappend2(char **target, char value);
 char				**ft_split_input2(char *line);
 void				get_cursor_position(int *rows, int *cols);
+int					ft_nbrlen(int value);
+int					ft_atoi(const char *str);
+void				term_backspace(int col_max, char **line);
+int					putchar_tc(int tc);
+int					get_win_col(void);
+void				ft_charbackspace(char **line);
+t_list				*ft_lstnew(void *content);
+void				ft_lstadd_back(t_list **lst, t_list *new);
 
 /*for test */
 void	show_info(t_info *info);

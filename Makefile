@@ -6,7 +6,7 @@
 #    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/25 17:05:38 by honlee           ###   ########.fr        #
+#    Updated: 2021/03/25 20:47:32 by honlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCNAME = 	\
 					proc_util1.c\
 					get_char_util1.c\
 					termios_util1.c\
+					termios_util2.c\
 					test_util1.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}

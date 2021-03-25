@@ -6,22 +6,21 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 17:51:47 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 23:33:16 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_term(void)
+void	init_term(struct termios *save, struct termios *setting)
 {
-	struct termios termios_p;
-	tcgetattr(0, &termios_p);
-	//이게 있어야 커서 이동 가능함.
+	tcgetattr(0, save);
+	tcgetattr(0, setting);
 	setupterm(NULL, STDOUT_FILENO, NULL);
-	termios_p.c_lflag &= ~(ICANON|ECHO);
-	termios_p.c_cc[VTIME] = 0;
-	termios_p.c_cc[VMIN] = 1;
-	tcsetattr(0,TCSANOW, &termios_p);
+	setting->c_lflag &= ~(ICANON|ECHO);
+	setting->c_cc[VTIME] = 0;
+	setting->c_cc[VMIN] = 1;
+	return ;
 }
 
 int	ft_atoi(const char *str)
@@ -46,101 +45,47 @@ int	ft_atoi(const char *str)
 	return (ret);
 }
 
-int	ft_nbrlen(int	value)
+void	putchar_and_save(char c, t_list_info *list_info, char *content)
 {
-	int		ret;
-
-	ret = 0;
-	while (value / 10 != 0)
-	{
-		ret++;
-		value = value / 10;
-	}
-	ret++;
-	return (ret);
+	write(1, &c, 1);
+	ft_lstadd_back(list_info->head, ft_lstnew(content));
+	return ;
 }
 
-void	get_cursor_position(int *row, int *col)
+void	ft_charappend_write(char **line, char c)
 {
-	int		a;
-	int		i;
-	char	buf[255];
-	int		ret;
-
-	a = 0;
-	i = 1;
-	write(0, "\033[6n", 4);
-	ret = read(0, buf, 254);
-	buf[ret] = '\0';
-	while (buf[i])
-	{
-		if (buf[i] >= '0' && buf[i] <= '9')
-		{
-			if (a == 0)
-				*row = ft_atoi(&buf[i]) - 1;
-			else
-				*col = ft_atoi(&buf[i]) - 1;
-			a++;
-			i += ft_nbrlen(ft_atoi(&buf[i])) - 1;
-		}
-		i++;
-	}
+	ft_charappend2(line, c);
+	write(1, &c, 1);
+	return ;
 }
 
-int		putchar_tc(int tc)
-{
-	write(1, &tc, 1);
-	return (0);
-}
-
-void	do_term_loop(char **line)
+void	do_term_loop(char **line, t_list_info *list_info)
 {
 	long	buff;
-	char	c;
-	int		pos;
-	int		c_row;
-	int		c_col;
-	char	*cm = tgetstr("cm", NULL);
+	int		o_row;
+	int		o_col;
+	int		col_max;	
 
 	buff = 0;
-	pos = 0;
+	col_max = get_win_col();
+	get_cursor_position(&o_row, &o_col);
 	while(read(0, &buff, sizeof(buff)) > 0)
 	{
-		if (buff > 0)
-		{            
-			if (buff == BACKSPACE)
-			{
-				get_cursor_position(&c_row, &c_col);
-				printf("%d, %d\n", c_row, c_col);
-				if (pos > 0)
-				{
-					write(1, DEL_BUF, ft_strlen(DEL_BUF));
-					pos--;
-				}
-			}
-			else if (buff == UP_ARROW)
-			{
-				tputs(tgoto(cm, 1, 1), 1, putchar_tc);
-				//tputs(tgetstr("ce", NULL), 1, putchar_tc);
-				write(1, "asdf", 4);
-			}
-			else if (buff == DOWN_ARROW)
-				printf("DOWN_ARROW!!\n");
-			else
-			{
-				c = (char)buff;
-				if (is_printable(c) == 1)
-				{
-					ft_charappend2(line, c);
-					write(1, &c, 1);
-					pos++;
-				}
-				if (c == '\n')
-				{
-					write(1, &c, 1);
-					return ;
-				}
-			}
+		if (buff == BACKSPACE)
+		{
+			if (ft_strlen(*line) > 0)
+				term_backspace(col_max, line);
+		}
+		else if (buff == UP_ARROW)
+			write(0, "UP", 2);
+		else if (buff == DOWN_ARROW)
+			write(0, "DOWN", 4);
+		else
+		{
+			if (is_printable((char)buff) == 1)
+				ft_charappend_write(line, (char)buff);
+			if ((char)buff == '\n')
+				return (putchar_and_save('\n', list_info, *line));
 		}
 		buff = 0;
 	}

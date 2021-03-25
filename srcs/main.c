@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 15:10:02 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 23:32:12 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,20 +91,25 @@ void	do_loop(char *line, t_info *info)
 
 int	main(int ac, char **av, char **env)
 {
-	t_info	info;
-	char	*line;
-	int		ret;
+	t_info			info;
+	char			*line;
+	t_list_info		list_info;
+	struct termios	save;
+	struct termios	setting;
 
 	ac = 0;
 	av = 0;
+	ft_salloc((void**)&(list_info.head), sizeof(t_list *), 1);
 	write(1, "minishell > ", 12);
 	info.env = ft_copy_string_arr(env);
 	info.fd_stdin = -2;
-	init_term();
+	init_term(&save, &setting);
 	while (1)
 	{
 		line = ft_strdup("");
-		do_term_loop(&line);
+		tcsetattr(0,TCSANOW, &setting);
+		do_term_loop(&line, &list_info);
+		tcsetattr(0,TCSANOW, &save);
 		ft_string_trim_free(&line);
 		if (check_quotes(line) != 0)
 			write(2, "quotes error\n", ft_strlen("quotes error\n"));

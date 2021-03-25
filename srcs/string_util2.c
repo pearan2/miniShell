@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:37:50 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 13:53:53 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/25 23:24:41 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,21 @@ char	**find_path(t_info *info)
 		idx++;
 	}
 	return (NULL);
+}
+
+void	ft_charbackspace(char **line)
+{
+	int		idx;
+	char	*temp;
+	int		len;
+
+	len = ft_strlen(*line);
+	ft_salloc((void**)&temp, 1, len);
+	idx = -1;
+	while (++idx < len - 1)
+		temp[idx] = (*line)[idx];
+	temp[idx] = 0;
+	free(*line);
+	*line = temp;
+	return ;
 }
