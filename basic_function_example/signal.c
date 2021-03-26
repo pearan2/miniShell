@@ -8,13 +8,18 @@
 
 void	sig_handler(int signo)
 {
-	printf("SIGINT occured\n");
+	if (signo == SIGQUIT)
+		printf("core dump called \n");
+	if (signo == SIGINT)
+		printf("ctrl + c called \n");
+	return ;
 }
 
 int		main()
 {
 	int i = 0;
 	signal(SIGINT, (void *)sig_handler);
+	signal(SIGQUIT, (void *)sig_handler);
 	while (1)
 	{
 		printf("%d\n", i);

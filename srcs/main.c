@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 01:35:42 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 16:24:52 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	do_loop(char *line, t_info *info)
 int	main(int ac, char **av, char **env)
 {
 	t_info			info;
-	char			*line;
 	t_list_info		list_info;
 	struct termios	save;
 	struct termios	setting;
@@ -107,18 +106,20 @@ int	main(int ac, char **av, char **env)
 	info.env = ft_copy_string_arr(env);
 	info.fd_stdin = -2;
 	init_term(&save, &setting);
+	signal(SIGQUIT, sigquit_handler);
+	signal(SIGINT, sigint_handler);
 	while (1)
 	{
-		line = ft_strdup("");
+		g_line = ft_strdup("");
 		tcsetattr(0,TCSANOW, &setting);
-		do_term_loop(&line, &list_info);
+		do_term_loop(&g_line, &list_info);
 		tcsetattr(0,TCSANOW, &save);
-		ft_string_trim_free(&line);
-		if (check_quotes(line) != 0)
+		ft_string_trim_free(&g_line);
+		if (check_quotes(g_line) != 0)
 			write(2, "quotes error\n", ft_strlen("quotes error\n"));
 		else
-			do_loop(line, &info);
-		free(line);
+			do_loop(g_line, &info);
+		free(g_line);
 		write(1, "minishell > ", 12);
 	}
 	return (0);

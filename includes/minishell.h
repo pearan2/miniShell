@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 01:58:45 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 16:16:21 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define UP_ARROW 4283163
 # define DOWN_ARROW 4348699
 # define DEL_BUF "\b \b"
+
+char				*g_line;
 
 typedef struct		s_info
 {
@@ -105,6 +107,10 @@ void				ft_charbackspace(char **line);
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 char				*ft_lst_getdata(t_list_info *list_info);
+int					ft_puterror_return(char *p_name, char *str);
+void				sigint_handler(int signo);
+void				sigquit_handler(int signo);
+void				sigcd_handler(int inputlen);
 
 /*for test */
 void	show_info(t_info *info);

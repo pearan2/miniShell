@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_util1.c                                      :+:      :+:    :+:   */
+/*   signal_util1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/22 21:44:51 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 15:16:22 by honlee           ###   ########.fr       */
+/*   Created: 2021/03/26 15:54:49 by honlee            #+#    #+#             */
+/*   Updated: 2021/03/26 16:07:25 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_puterror(char *p_name, int en)
+void	sigint_handler(int signo)
 {
-	write(2, p_name, ft_strlen(p_name));
-	write(2, ": ", 2);
-	write(2, strerror(en), ft_strlen(strerror(en)));
-	write(2, "\n", 1);
+	return ;
 }
 
-int		ft_puterror_return(char *p_name, char *str)
+void	sigquit_handler(int signo)
 {
-	write(2, p_name, ft_strlen(p_name));
-	write(2, ": ", 2);
-	write(2, str, ft_strlen(str));
-	write(2, "\n", 1);
-	return (1);
+	return ;
+}
+
+void	sigcd_handler(int inputlen)
+{
+	if (inputlen > 0)
+		return ;
+	write(2, "exit\n", 5);
+	exit(0);
 }

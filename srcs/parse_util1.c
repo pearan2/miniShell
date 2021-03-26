@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 13:24:27 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/26 15:17:46 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	make_info(t_info *info, char **ret)
 
 	idx = -1;
 	result = 0;
+	if (ret == 0)
+		return(ft_puterror_return("minishell", "parser error"));
 	while (ret[++idx] != 0)
 	{
 		if (ft_strcmp(ret[idx], ">") == 0)

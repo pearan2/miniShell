@@ -6,7 +6,7 @@
 #    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/26 01:45:55 by honlee           ###   ########.fr        #
+#    Updated: 2021/03/26 16:01:00 by honlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCNAME = 	\
 					termios_util2.c\
 					termios_util3.c\
 					list_util1.c\
+					signal_util1.c\
 					test_util1.c\
 
 SRCS		=	${addprefix ${SRCDIR}, ${SRCNAME}}

@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 16:23:58 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 15:14:13 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ char	**ft_split_input2(char *line)
 	char	f_va;
 	char	**ret;
 	char	*save;
+	char	sep;
 
 	save = line;
 	temp = ft_strdup("");
@@ -76,19 +77,44 @@ char	**ft_split_input2(char *line)
 	ret[0] = NULL;
 	while (line[++idx] != 0)
 	{
-		if (line[idx] == ' ') // 분리해야하는가?
+		if (line[idx] == ' ' || line[idx] == '>' || line[idx] == '<') // 분리해야하는가?
+		{
+			sep = line[idx];
 			if (flag == 0) // 따옴표가 세팅되어 있지 않다.
 			{
 				ft_string_append(&ret, temp); // 리턴에 넣어줌.
 				free(temp);
 				temp = ft_strdup("");
 				line += idx; // line[idx] 가 가르키던 방향
-				while (*line == ' ') // 공백이 아닌게 올때까지 밀어준다.
-					line++;
+				if (sep == ' ')
+				{
+					while (*line == ' ') // 공백이 아닌게 올때까지 밀어준다.
+						line++;
+				}
+				else
+				{
+					while (*line == sep) // > 면 > 가 나오는동안, <면 <가나오는동안
+					{
+						ft_charappend2(&temp, *line); // 계속어펜드
+						line++;
+					}
+					if (ft_strlen(temp) > 2 || (ft_strlen(temp) == 2 && temp[0] == '<'))
+					{
+						free(temp);
+						free(save);
+						ft_split_free2(ret);
+						return (NULL);						
+					}
+					// 다른게 나왔다면 끊어준다.
+					ft_string_append(&ret, temp);
+					free(temp);
+					temp = ft_strdup("");
+				}
 				idx = -1; // 인덱스 초기화
 			}
 			else // 따옴표를 찾는중이다.
 				ft_charappend2(&temp, line[idx]);// 집어넣는다.
+		}
 		else
 		{
 			ft_charappend2(&temp, line[idx]); // 일단 집어넣는다.

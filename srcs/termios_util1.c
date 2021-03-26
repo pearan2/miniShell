@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 01:58:39 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/26 16:51:32 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	do_term_loop(char **line, t_list_info *list_info)
 			term_uparrow(col_max, o_col, line, list_info);
 		else if (buff == DOWN_ARROW)
 			term_downarrow(col_max, o_col, line, list_info);
+		else if (buff == EOF_KEY)
+			sigcd_handler(ft_strlen(*line));
 		else
 		{
 			if (is_printable((char)buff) == 1)
