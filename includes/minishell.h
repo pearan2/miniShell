@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 16:16:21 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/29 08:10:26 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void				ft_exit(t_info *info, int fd[2]);
 
 long				my_atoi(char *str);
 char				*my_itoa(long num);
+char				*my_strjoin(char *s1, char *s2);
 /**/
 
 #endif 

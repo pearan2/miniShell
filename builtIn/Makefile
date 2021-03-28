@@ -24,7 +24,9 @@ SRCS = ${addprefix ${SRCDIR}, ${SRCNAME}}\
 	   ft_env.c\
 	   ft_pwd.c\
 	   ft_exit.c\
+	   ft_cd.c\
 	   ft_my_atoi_itoa.c\
+	   ft_my_strjoin.c\
 
 
 OBJS = ${SRCS:.c=.o}

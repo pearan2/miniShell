@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/25 15:30:05 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/29 07:42:42 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	do_parent(t_info *info, int status, int fd[2])
 
 	char	buf[10];
 	int len;
-
+//fd[0] 내부값이 20 == exit
 	if (status == 20)
 	{
 		gnl = get_next_line(fd[0], &result);
