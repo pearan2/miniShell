@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:02:19 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 23:15:57 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 23:39:05 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			get_env_num(t_info *info, char *str)
 	int		out;
 
 	i = 0;
-	temp = my_strjoin(str, "=");
+	temp = ft_strdup(str);
 	out = -1;
 	while(info->env[i] != NULL)
 	{
