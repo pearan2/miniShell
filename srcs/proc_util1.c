@@ -6,20 +6,11 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:13:03 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 16:18:59 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 16:27:16 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	proc_print(t_info *info)
-{
-	char	buff;
-
-	while (read(info->fd_stdout_r, &buff, 1) > 0)
-		write(1, &buff, 1);
-	close(info->fd_stdout_r);
-}
 
 int	proc_inner(t_info *info, char *path)
 {
