@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 13:09:43 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 16:18:11 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	do_proc(t_info *info)
 		|| ft_strcmp(info->opt[0], "unset") == 0
 		|| ft_strcmp(info->opt[0], "env") == 0
 		|| ft_strcmp(info->opt[0], "exit") == 0)
-		return (0);
+		ft_built_in(info);
 	else
 	{
 		path = get_path(info);
@@ -63,7 +63,7 @@ int	do_proc(t_info *info)
 	close(info->fd_stdin);
 	if (info->is_print == 1)
 		close(info->fd_stdout_r);
-	return (0);
+	return (info->built_result_num);
 }
 
 void	do_loop(char *line, t_info *info)
