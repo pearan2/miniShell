@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/29 07:42:42 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 13:33:05 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int			check_order(char *str)
 
 static void	do_child(t_info *info, int order, int fd[2])
 {
-	if (order == 3)
+	if (order == 2)
+		ft_cd(info, fd);
+	else if (order == 3)
 		ft_pwd(info, fd);
 	else if (order == 6)
 		ft_env(info, fd);
@@ -47,10 +49,14 @@ static void	do_parent(t_info *info, int status, int fd[2])
 	char	*result;
 	long	stat;
 	int		gnl;
-
+	int		i;
 	char	buf[10];
-	int len;
+	int		len;
+	int		num_env;
 //fd[0] 내부값이 20 == exit
+
+	printf("status = %d\n",status);
+
 	if (status == 20)
 	{
 		gnl = get_next_line(fd[0], &result);
@@ -59,6 +65,29 @@ static void	do_parent(t_info *info, int status, int fd[2])
 		free(result);
 		exit((int)stat);
 	}
+	else if (status == 10)
+	{
+		i = 0;
+		gnl = get_next_line(fd[0], &result);
+		num_env = get_env_num(info, "OLDPWD");
+		if (num_env >= 0)
+		{
+			free(info->env[num_env]);
+			info->env[num_env] = ft_strdup(result);
+		}
+		free(result);
+		gnl = get_next_line(fd[0], &result);
+		num_env = get_env_num(info, "PWD");
+		if (num_env >= 0)
+		{
+			free(info->env[num_env]);
+			info->env[num_env] = ft_strdup(result);
+		}
+		free(result);
+		gnl = get_next_line(fd[0], &result);
+		info->built_result_num = my_atoi(result) % 256;
+		free(result);
+	}	
 	else
 	{
 		gnl = get_next_line(fd[0], &result);
@@ -85,6 +114,8 @@ int			*ft_built_in(t_info *info)
 	if (pid > 0)
 	{
 		pwait = wait(&status);
+printf("wait = %d",status);
+
 		do_parent(info, status / 256, fd);
 	}
 	else if (pid == 0)
