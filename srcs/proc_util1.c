@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_util1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:13:03 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 13:45:19 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 10:09:04 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	proc_inner(t_info *info, char *path)
 	else
 	{
 		waitpid(pid, &status, 0);
-		if (status != 0)
+		if (status != 0 && status != 2)
 			ft_puterror(path, status / 255);
 		close(info->fd_stdout);
 		close(info->fd_stdin);

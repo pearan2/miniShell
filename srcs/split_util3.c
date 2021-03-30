@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_util3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 15:14:13 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 10:37:49 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,12 @@ char	**ft_split_input2(char *line)
 			sep = line[idx];
 			if (flag == 0) // 따옴표가 세팅되어 있지 않다.
 			{
-				ft_string_append(&ret, temp); // 리턴에 넣어줌.
-				free(temp);
-				temp = ft_strdup("");
+				if (ft_strlen(temp) > 0)
+				{
+					ft_string_append(&ret, temp); // 리턴에 넣어줌.
+					free(temp);
+					temp = ft_strdup("");
+				}
 				line += idx; // line[idx] 가 가르키던 방향
 				if (sep == ' ')
 				{
