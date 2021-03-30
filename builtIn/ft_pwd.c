@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 10:34:36 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/25 15:28:51 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:40:38 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@ static int	find_pwd(char *str)
 	return (-1);
 }
 
+static void ft_pwd_support(t_info *info, char *env, int len, int flag)
+{
+	if (flag == 1)
+	{
+		write(info->fd_stdout, env + 4, len - 4);
+		write(info->fd_stdout, "\n", 1);
+	}
+	else
+	{
+		write(1, env + 4, len - 4);
+		write(1, "\n", 1);
+	}
+}
+
 void		ft_pwd(t_info *info, int fd[2])
 {
 	int		i;
@@ -25,16 +39,16 @@ void		ft_pwd(t_info *info, int fd[2])
 	int		len;
 
 	i = 0;
-	len = 0;
-	flag = -1;
 	while(info->env[i])
 	{
 		flag = find_pwd(info->env[i]);
 		if (flag == 1)
 		{
 			len = ft_strlen(info->env[i]);
-			write(info->fd_stdout, info->env[i] + 4, len - 4);
-			write(info->fd_stdout, "\n", 1);
+			if (info->is_print == 0)
+				ft_pwd_support(info, info->env[i], len, 1);
+			else
+				ft_pwd_support(info, info->env[i], len, 2);
 			break;
 		}
 		i++;

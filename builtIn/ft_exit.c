@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:21:50 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/29 07:38:33 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:45:21 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		exit_support(t_info *info, int cnt)
 	i = 0;
 	while (info->opt[1][i])
 	{
-		if (info->opt[1][i] < '0' && info->opt[1][i] > '9')
+		if (info->opt[1][i] < '0' || info->opt[1][i] > '9')
 			return (2); //exit 뒤에는 숫자요소 1개만 와야되는데 문자요소가옴
 		i++;
 	}
@@ -38,13 +38,13 @@ static void		exit_result(t_info *info, int flag, int fd[2])
 	}
 	else if (flag == 2)
 	{
-		write(1, "bash: exit: aa: numeric argument required\n", 42);
+		write(2, "bash: exit: aa: numeric argument required\n", 42);
 		write(fd[1], "255\n", 4);
 		exit(20);
 	}
 	else if (flag == 3)
 	{
-		write(1, "bash: exit: too many arguments\n", 31);
+		write(2, "bash: exit: too many arguments\n", 31);
 		write(fd[1], "1\n", 2);
 		exit(1);
 	}

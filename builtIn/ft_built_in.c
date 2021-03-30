@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 15:46:06 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:53:44 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	do_child(t_info *info, int order, int fd[2])
 		ft_cd(info, fd);
 	else if (order == 3)
 		ft_pwd(info, fd);
+//	else if (order == 4)
+//		ft_export(info, fd);
 	else if (order == 6)
 		ft_env(info, fd);
 	else if (order == 7)
