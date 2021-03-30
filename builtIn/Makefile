@@ -29,6 +29,7 @@ SRCS = ${addprefix ${SRCDIR}, ${SRCNAME}}\
 	   ft_my_strjoin.c\
 	   ft_get_env.c\
 	   ft_strncmp.c\
+	   ft_cd_support.c\
 
 
 OBJS = ${SRCS:.c=.o}

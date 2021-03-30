@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/29 08:10:26 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:24:53 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,16 @@ void	show_info(t_info *info);
 void				ft_env(t_info *info, int fd[2]);
 void				ft_pwd(t_info *info, int fd[2]);
 void				ft_exit(t_info *info, int fd[2]);
-
+void				ft_cd(t_info *info, int fd[2]);
+void				do_cd(t_info *info, char *old, char *pwd, int fd[2]);
+void				go_home(t_info *info, char *old, int fd[2]);
+int					ft_strncmp(char *s1, char *s2, int n);
 long				my_atoi(char *str);
 char				*my_itoa(long num);
 char				*my_strjoin(char *s1, char *s2);
+char				*get_env(t_info *info, char *str);
+char				*get_env_full(t_info *info, char *str);
+int					get_env_num(t_info *info, char *str);
 /**/
 
 #endif 
