@@ -6,6 +6,8 @@ SRCNAME = 	\
 					split_util1.c\
 					split_util2.c\
 					split_util3.c\
+					split_util4.c\
+					split_util5.c\
 					get_next_line.c\
 					exit_util1.c\
 					parse_util1.c\
@@ -15,8 +17,9 @@ SRCNAME = 	\
 					error_util1.c\
 					string_util2.c\
 					proc_util1.c\
-					get_char_util1.c\
-					test_util1.c\
+					list_util1.c\
+					signal_util1.c\
+					message_util1.c\
 
 SRCS = ${addprefix ${SRCDIR}, ${SRCNAME}}\
 		tester.c \
@@ -30,6 +33,7 @@ SRCS = ${addprefix ${SRCDIR}, ${SRCNAME}}\
 	   ft_get_env.c\
 	   ft_strncmp.c\
 	   ft_cd_support.c\
+
 
 OBJS = ${SRCS:.c=.o}
 CC	=	gcc #-Wall -Werror -Wextra

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_built_in.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 15:55:56 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 15:46:06 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	do_parent(t_info *info, int status, int fd[2])
 	int		num_env;
 //fd[0] 내부값이 20 == exit
 
-	printf("status = %d\n",status);
+	printf("status/256 = %d\n",status);
 
 	if (status == 20)
 	{
@@ -114,8 +114,7 @@ int			*ft_built_in(t_info *info)
 	if (pid > 0)
 	{
 		pwait = wait(&status);
-printf("wait = %d",status);
-
+		printf("status = %d\n",status);
 		do_parent(info, status / 256, fd);
 	}
 	else if (pid == 0)
