@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 07:48:57 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 15:55:58 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 19:52:44 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ static char *combine_str2(char **pwd)
 	len = 0;
 	while(pwd[len])
 		len++;
-	out = ft_strdup("");
 	i = 0;
+	if ((len - 1) <= 0)
+		out = ft_strdup("/");
+	else
+		out = ft_strdup("");
 	while(i < len - 1)
 	{
 		del = out;
@@ -112,6 +115,7 @@ void		ft_cd(t_info *info, int fd[2])
 	old = my_strjoin("OLDPWD=", pwd);
 	if (info->opt[1] != 0)
 	{
+		rebase_input_cd(info, 1);
 		if (info->opt[1][0] == '~')
 		{
 			free(pwd);

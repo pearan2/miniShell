@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 16:55:29 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 17:56:57 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	do_child(t_info *info, int order, int fd[2])
 		ft_exit(info, fd);
 }
 
-static void	do_parent(t_info *info, int status, int fd[2])
+void		do_parent(t_info *info, int status, int fd[2])
 {
 	char	*result;
 	long	stat;
@@ -60,36 +60,11 @@ static void	do_parent(t_info *info, int status, int fd[2])
 	printf("status/256 = %d\n",status);
 
 	if (status == 20)
-	{
-		gnl = get_next_line(fd[0], &result);
-		stat = my_atoi(result);
-		stat = stat % 256;
-		free(result);
-		exit((int)stat);
-	}
+		ft_parent_exit(fd);
 	else if (status == 10)
-	{
-		i = 0;
-		gnl = get_next_line(fd[0], &result);
-		num_env = get_env_num(info, "OLDPWD");
-		if (num_env >= 0)
-		{
-			free(info->env[num_env]);
-			info->env[num_env] = ft_strdup(result);
-		}
-		free(result);
-		gnl = get_next_line(fd[0], &result);
-		num_env = get_env_num(info, "PWD");
-		if (num_env >= 0)
-		{
-			free(info->env[num_env]);
-			info->env[num_env] = ft_strdup(result);
-		}
-		free(result);
-		gnl = get_next_line(fd[0], &result);
-		info->built_result_num = my_atoi(result) % 256;
-		free(result);
-	}	
+		ft_parent_cd(info, fd);
+	else if (status == 30)
+		ft_parent_export(info, fd);
 	else
 	{
 		gnl = get_next_line(fd[0], &result);
