@@ -44,7 +44,7 @@ int main(int argc, char **argv, char **env)
 		info.env[i][j] = '\0';
 		i++;
 	}
-	env[i] = 0;
+	info.env[i] = NULL;
 
 /*
 	char *out;
@@ -175,19 +175,40 @@ int main(int argc, char **argv, char **env)
 		}
 		else if (out[0] == 'p' && out[1] == 'w' && out[2] == 'd')
 		{
-			i = 0;
+			i = 1;
 			
 			fd_out = open("./stdout",O_TRUNC|O_RDWR);
-			info.opt = (char **)malloc(sizeof(char *) * 2);
+			info.opt = (char **)malloc(sizeof(char *) * 4);
 			info.opt[0] = (char *)malloc(sizeof(char) * 4);
 			info.opt[0][0] = 'p';
 			info.opt[0][1] = 'w';
 			info.opt[0][2] = 'd';
 			info.opt[0][3] = '\0';
 			info.opt[1] = 0;
+			info.opt[2] = 0;
+			info.opt[3] = 0;
+			while(i < 3)
+			{
+				gnl = get_next_line(0,&out2);
+				if (out2[0] == '\0')
+				{
+					free(out2);
+					break;
+				}
+				info.opt[i] = out2;
+				i++;
+			}
 			info.fd_stdout = fd_out;
-		   	ft_built_in(&info);	
-			free(info.opt[0]);
+		   	ft_built_in(&info);
+			i = 0;
+			while(i < 4)
+			{
+				if (info.opt[i])
+					free(info.opt[i]);
+				else
+					break;
+				i++;
+			}
 			free(info.opt);
 			close(fd_out);
 			built_flag = 2;
@@ -204,6 +225,45 @@ int main(int argc, char **argv, char **env)
 			info.opt[0][2] = 'i';
 			info.opt[0][3] = 't';
 			info.opt[0][4] = '\0';
+			info.opt[1] = 0;
+			info.opt[2] = 0;
+			info.opt[3] = 0;
+			while(i < 3)
+			{
+				gnl = get_next_line(0,&out2);
+				if (out2[0] == '\0')
+				{
+					free(out2);
+					break;
+				}
+				info.opt[i] = out2;
+				i++;
+			}
+			info.fd_stdout = fd_out;
+		   	ft_built_in(&info);
+			i = 0;
+			while(i < 4)
+			{
+				if (info.opt[i])
+					free(info.opt[i]);
+				else
+					break;
+				i++;
+			}
+			free(info.opt);
+			close(fd_out);
+			built_flag = 2;
+		}
+		else if (out[0] == 'c' && out[1] == 'd')
+		{
+			i = 1;
+			
+			fd_out = open("./stdout",O_TRUNC|O_RDWR);
+			info.opt = (char **)malloc(sizeof(char *) * 4);
+			info.opt[0] = (char *)malloc(sizeof(char) * 3);
+			info.opt[0][0] = 'c';
+			info.opt[0][1] = 'd';
+			info.opt[0][2] = '\0';
 			info.opt[1] = 0;
 			info.opt[2] = 0;
 			info.opt[3] = 0;
