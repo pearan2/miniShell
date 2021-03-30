@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:02:19 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 19:15:32 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 23:15:57 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,35 @@ char		*get_env(t_info *info, char *str)
 	return (out);
 }
 
+static char	*support_change_input_to_env(t_info *info, char *str)
+{
+	char	**split;
+	char	*temp;
+	char	*out;
+	int		len;
+
+	len = 0;
+	out = ft_strdup("");
+	split = ft_split(str, "$");
+	while (split[len])
+	{
+		temp = split[len];
+		split[len] = get_env(info, temp);
+		free(temp);
+		len++;	
+	}
+	len = 0;
+	while (split[len])
+	{
+		temp = out;
+		out = my_strjoin(out, split[len]);
+		free(temp);
+		len++;
+	}
+	ft_split_free2(split);
+	return (out);
+}
+
 char		*change_input_to_env(t_info *info, char *str)
 {
 	char	*out;
@@ -74,9 +103,7 @@ char		*change_input_to_env(t_info *info, char *str)
 	{
 		if (str[i] == '$')
 		{
-			temp = ft_strdup(str + i + 1);
-			temp2 = get_env(info, temp);
-			free(temp);
+			temp2 = support_change_input_to_env(info, str + i);
 			str[i] = '\0';
 			temp = ft_strdup(str);
 			temp3 = out;
@@ -84,6 +111,7 @@ char		*change_input_to_env(t_info *info, char *str)
 			free(temp3);
 			free(temp);
 			free(temp2);
+			break;
 		}
 	}
 	return (out);

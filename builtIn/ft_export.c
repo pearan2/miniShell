@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:37:03 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 19:41:19 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 23:13:32 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	rebase_input(t_info *info, int i)
 	temp = my_strjoin(split[0], "=");
 	temp2 = info->opt[i];
 	info->opt[i] = my_strjoin(temp, split[1]);
+	ft_split_free2(split);
 	free(temp2);
 	free(temp);
 }
@@ -62,20 +63,21 @@ static int	is_available(t_info *info, int i)
 	return (0);
 }
 
-static void	export_error(char *str, int fd[2])
+static void	export_error(char *str, int *tag)
 {
+	*tag = 1;
 	write(2, "bash: export: \'", 15);
 	write(2, str, ft_strlen(str));
 	write(2, "\': not a valid identifier\n", 26);
-	write(fd[1], "1\n", 2);
 }
 
 void		ft_export(t_info *info, int fd[2])
 {
 	int		i;
 	int		flag;
+	int		tag;
 
-	flag = 0;
+	tag = 0;
 	if (info->opt[1] == 0)
 		no_comp_export(info, fd);
 	i = 0;
@@ -83,13 +85,16 @@ void		ft_export(t_info *info, int fd[2])
 	{
 		flag = is_available(info, i);
 		if (flag)
-			break;
-		write(fd[1], info->opt[i], ft_strlen(info->opt[i]));
-		write(fd[1], "\n", 1);
+			export_error(info->opt[i], &tag);
+		else
+		{
+			write(fd[1], info->opt[i], ft_strlen(info->opt[i]));
+			write(fd[1], "\n", 1);
+		}
 	}
 	write(fd[1], "export_end\n", 11);
-	if (flag)
-		export_error(info->opt[i], fd);
+	if (tag)
+		write(fd[1], "1\n", 2);
 	else
 		write(fd[1], "0\n", 2);
 	exit(30);
