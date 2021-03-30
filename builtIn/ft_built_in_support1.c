@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 22:45:27 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 00:14:10 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_parent_exit(int fd[2])
+void		ft_parent_exit(t_info *info, int fd[2])
 {
 	long	stat;
 	char	*result;
@@ -21,7 +21,8 @@ void		ft_parent_exit(int fd[2])
 	stat = my_atoi(result);
 	stat = stat % 256;
 	free(result);
-	exit((int)stat);
+	if (info->is_print == 1)
+		exit((int)stat);
 }
 
 static void	support_p_cd(t_info *info)

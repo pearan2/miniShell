@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:37:03 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 23:13:32 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 00:10:23 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ void		ft_export(t_info *info, int fd[2])
 		flag = is_available(info, i);
 		if (flag)
 			export_error(info->opt[i], &tag);
-		else
+		else if (info->is_print == 1)
 		{
 			write(fd[1], info->opt[i], ft_strlen(info->opt[i]));
 			write(fd[1], "\n", 1);
 		}
 	}
 	write(fd[1], "export_end\n", 11);
-	if (tag)
+	if (tag && info->is_print == 1)
 		write(fd[1], "1\n", 2);
 	else
 		write(fd[1], "0\n", 2);

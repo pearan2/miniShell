@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 23:26:59 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 00:22:34 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,9 @@ void		do_parent(t_info *info, int status, int fd[2])
 	int		num_env;
 //fd[0] 내부값이 20 == exit
 
-	printf("status/256 = %d\n",status);
-
+//	printf("status/256 = %d\n",status);
 	if (status == 20)
-		ft_parent_exit(fd);
+		ft_parent_exit(info, fd);
 	else if (status == 10)
 		ft_parent_cd(info, fd);
 	else if (status == 30)
@@ -95,7 +94,7 @@ int			*ft_built_in(t_info *info)
 	if (pid > 0)
 	{
 		pwait = wait(&status);
-		printf("status = %d\n",status);
+	//	printf("status = %d\n",status);
 		do_parent(info, status / 256, fd);
 	}
 	else if (pid == 0)

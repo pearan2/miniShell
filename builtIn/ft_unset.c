@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 22:55:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 23:36:10 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 00:10:58 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		ft_unset(t_info *info, int fd[2])
 		flag = is_available(info, i);
 		if (flag)
 			unset_error(info->opt[i], &tag);
-		else
+		else if (info->is_print == 1)
 		{
 			write(fd[1], info->opt[i], ft_strlen(info->opt[i]));
 			write(fd[1], "\n", 1);
