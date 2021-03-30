@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:17:48 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 19:55:20 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 20:03:09 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ void		do_cd(t_info *info, char *old, char *pwd, int fd[2])
 	{
 		free(pwd);
 		free(old);
-		write(1, "cd: no such file or directory: ", 31);
+		write(1, "bash: cd: ", 10);
 		write(1, info->opt[1], ft_strlen(info->opt[1]));
-		write(1, "\n", 1);
+		write(1, ": No such file or directory\n", 28);
 		write(fd[1], "1\n", 2);
 		exit(1);
 	}
