@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/29 08:10:26 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:50:09 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int					check_quotes(char *line);
 char				**ft_split_input(char *line);
 char    			*str_trim_free(char **tg);
 char				*ft_string_trim_free(char **line);
-int					get_char(char **line);
 char				*str_trim_dup(char *line);
 void				init_term(struct termios *save, struct termios *setting);
 void				do_term_loop(char **line, t_list_info *list_info);
@@ -111,9 +110,24 @@ int					ft_puterror_return(char *p_name, char *str);
 void				sigint_handler(int signo);
 void				sigquit_handler(int signo);
 void				sigcd_handler(int inputlen);
+void				ft_putstr(const char *str);
+void     		   	put_welcome_msg(void);
+void				put_prompt(void);
+void				init_all(t_list_info *list_info, t_info *info,
+							struct termios *save, struct termios *setting);
+void				ft_split_input2_proc_quotes(char *line, char **temp, int idx
+										,char *f_va);
+void				ft_split_input2_init_all(char **temp, int *idx,
+										char *f_va, char ***ret);
+void				ft_split_input2_charappend(char ***ret, char **temp);
+char				**ft_split_input2_free_all(char *line, char *temp, char **ret);
+int					ft_split_input2_f_va_zero(char ***ret, char **temp, int *idx,
+								char *line);
+void				ft_free2(char *one, char *two);
 
 /*for test */
 void	show_info(t_info *info);
+void	change_env(t_info *info);
 /*for test */
 
 /**/

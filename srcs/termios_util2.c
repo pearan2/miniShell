@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:44:08 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 22:59:57 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 13:28:45 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ int	ft_nbrlen(int value)
 	return (ret);
 }
 
-int		putchar_tc(int tc)
+int	putchar_tc(int tc)
 {
 	write(1, &tc, 1);
 	return (0);
 }
 
-int		get_win_col(void)
+int	get_win_col(void)
 {
-	struct winsize w;
+	struct winsize	w;
 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	return (w.ws_col);
@@ -69,9 +69,11 @@ int		get_win_col(void)
 
 void	term_backspace(int col_max, char **line)
 {
-	int n_row;
-	int n_col;
+	int	n_row;
+	int	n_col;
 
+	if (ft_strlen(*line) <= 0)
+		return ;
 	ft_charbackspace(line);
 	get_cursor_position(&n_row, &n_col);
 	n_col--;

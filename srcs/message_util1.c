@@ -3,16 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   message_util1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 10:47:20 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 10:51:07 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/30 13:13:41 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void        put_welcome_msg(void)
+void	put_welcome_msg(void)
 {
-    return ;
+	ft_putstr("-=========================================================-\n");
+	ft_putstr("|============ MiniShell ==================================|\n");
+	ft_putstr("|=========================================================|\n");
+	ft_putstr("|================================ by honlee, junhypar  ===|\n");
+	ft_putstr("-=========================================================-\n");
+	return ;
+}
+
+void	put_prompt(void)
+{
+	ft_putstr("minishell $> ");
 }

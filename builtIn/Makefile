@@ -28,7 +28,6 @@ SRCS = ${addprefix ${SRCDIR}, ${SRCNAME}}\
 	   ft_my_atoi_itoa.c\
 	   ft_my_strjoin.c\
 
-
 OBJS = ${SRCS:.c=.o}
 CC	=	gcc #-Wall -Werror -Wextra
 

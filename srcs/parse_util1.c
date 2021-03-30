@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 15:17:46 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 13:14:17 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_info(t_info *info, char *od)
 {
-	int fd[2];
+	int	fd[2];
 
 	pipe(fd);
 	ft_salloc((void **)&info->opt, sizeof(char *), 1);
@@ -82,7 +82,7 @@ int	make_info(t_info *info, char **ret)
 	idx = -1;
 	result = 0;
 	if (ret == 0)
-		return(ft_puterror_return("minishell", "parser error"));
+		return (ft_puterror_return("minishell", "parser error"));
 	while (ret[++idx] != 0)
 	{
 		if (ft_strcmp(ret[idx], ">") == 0)

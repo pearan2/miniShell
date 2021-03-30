@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_char_util1.c                                   :+:      :+:    :+:   */
+/*   split_util5.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 15:21:49 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 15:56:02 by honlee           ###   ########.fr       */
+/*   Created: 2021/03/30 15:49:39 by honlee            #+#    #+#             */
+/*   Updated: 2021/03/30 15:51:42 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	get_char(char **line)
+void	ft_free2(char *one, char *two)
 {
-	long c;
-
-	while (read(0, &c, sizeof(c)) > 0)
-	{
-		printf("%d\n", (int)c);
-	}
-	return (-1);
+	free(one);
+	free(two);
 }

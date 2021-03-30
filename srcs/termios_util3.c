@@ -6,16 +6,17 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 01:00:41 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 02:34:59 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 13:29:32 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	term_uparrow(int col_max, int o_col, char **line, t_list_info *list_info)
+void	term_uparrow(int col_max, int o_col, char **line,
+						t_list_info *list_info)
 {
-	int n_row;
-	int n_col;
+	int	n_row;
+	int	n_col;
 	int	len;
 
 	if (list_info->size == 0)
@@ -26,7 +27,7 @@ void	term_uparrow(int col_max, int o_col, char **line, t_list_info *list_info)
 	list_info->pos--;
 	if (list_info->pos < 0)
 		list_info->pos = list_info->size - 1;
-	while (len + o_col> col_max)
+	while (len + o_col > col_max)
 	{
 		tputs(tgoto(tgetstr("cm", NULL), 0, n_row), 1, putchar_tc);
 		tputs(tgetstr("ce", NULL), 1, putchar_tc);
@@ -39,10 +40,11 @@ void	term_uparrow(int col_max, int o_col, char **line, t_list_info *list_info)
 	write(1, *line, ft_strlen(*line));
 }
 
-void	term_downarrow(int col_max, int o_col, char **line, t_list_info *list_info)
+void	term_downarrow(int col_max, int o_col, char **line,
+						t_list_info *list_info)
 {
-	int n_row;
-	int n_col;
+	int	n_row;
+	int	n_col;
 	int	len;
 
 	if (list_info->size == 0)
@@ -53,7 +55,7 @@ void	term_downarrow(int col_max, int o_col, char **line, t_list_info *list_info)
 	list_info->pos++;
 	if (list_info->pos >= list_info->size)
 		list_info->pos = 0;
-	while (len + o_col> col_max)
+	while (len + o_col > col_max)
 	{
 		tputs(tgoto(tgetstr("cm", NULL), 0, n_row), 1, putchar_tc);
 		tputs(tgetstr("ce", NULL), 1, putchar_tc);

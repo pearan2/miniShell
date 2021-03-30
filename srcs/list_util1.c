@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 23:14:48 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 01:35:31 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 13:12:54 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list		*ret;
 
-	if (!(ret = malloc(sizeof(t_list))))
-		return (NULL);
+	ft_salloc((void **)&ret, 1, sizeof(t_list));
 	ret->content = content;
 	ret->next = NULL;
 	return (ret);
@@ -49,5 +48,5 @@ char	*ft_lst_getdata(t_list_info *list_info)
 	list = *(list_info->head);
 	while (++idx < list_info->pos)
 		list = list->next;
-	return (list->content);	
+	return (list->content);
 }

@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:39:16 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/24 11:54:07 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/30 13:17:08 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void static	init_int(int *s_flag, int *d_flag, int *idx)
+{
+	*s_flag = 0;
+	*d_flag = 0;
+	*idx = -1;
+}
 
 int	check_quotes(char *line)
 {
@@ -18,9 +25,7 @@ int	check_quotes(char *line)
 	int	d_flag;
 	int	idx;
 
-	s_flag = 0;
-	d_flag = 0;
-	idx = -1;
+	init_int(&s_flag, &d_flag, &idx);
 	while (line[++idx] != 0)
 	{
 		if (line[idx] == '\'' && d_flag == 0)

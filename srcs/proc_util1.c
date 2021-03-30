@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_util1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:13:03 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 10:09:04 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/30 13:19:05 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	proc_print(t_info *info)
 {
-	char buff;
+	char	buff;
 
 	while (read(info->fd_stdout_r, &buff, 1) > 0)
 		write(1, &buff, 1);
@@ -23,8 +23,8 @@ void	proc_print(t_info *info)
 
 int	proc_inner(t_info *info, char *path)
 {
-	int pid;
-	int status;
+	int	pid;
+	int	status;
 
 	pid = fork();
 	if (pid == 0)
@@ -41,10 +41,6 @@ int	proc_inner(t_info *info, char *path)
 		waitpid(pid, &status, 0);
 		if (status != 0 && status != 2)
 			ft_puterror(path, status / 255);
-		close(info->fd_stdout);
-		close(info->fd_stdin);
-		if (info->is_print == 1)
-			close(info->fd_stdout_r);
 		free(path);
 		return (status);
 	}

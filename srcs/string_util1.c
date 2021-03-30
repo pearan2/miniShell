@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:55:54 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/23 15:19:37 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 13:20:43 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_copy_string_arr(char **target)
 	idx = 0;
 	while (target[idx] != 0)
 		idx++;
-	ft_salloc((void**)&ret, sizeof(char *), idx + 1);
+	ft_salloc((void **)&ret, sizeof(char *), idx + 1);
 	idx = -1;
 	while (target[++idx] != 0)
 		ret[idx] = ft_strdup(target[idx]);
@@ -58,16 +58,16 @@ char	*ft_find_pc(char *target)
 
 int	ft_string_append(char ***target, char *value)
 {
-	char **temp;
-	int	idx;
-	int iter;
+	char	**temp;
+	int		idx;
+	int		iter;
 
 	temp = NULL;
 	idx = 0;
 	iter = -1;
 	while ((*target)[idx] != 0)
 		idx++;
-	ft_salloc((void**)&temp, sizeof(char *), idx + 2);
+	ft_salloc((void **)&temp, sizeof(char *), idx + 2);
 	while (++iter < idx)
 		temp[iter] = (*target)[iter];
 	temp[iter++] = ft_strdup(value);

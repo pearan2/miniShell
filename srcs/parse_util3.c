@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:45:40 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/25 15:09:13 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 13:18:46 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*str_trim_dup(char *line)
 {
-	char *temp;
+	char	*temp;
 
 	temp = ft_strdup(line);
 	return (ft_string_trim_free(&temp));
