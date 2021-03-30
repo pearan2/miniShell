@@ -6,7 +6,7 @@
 #    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/30 17:56:12 by junhypar         ###   ########.fr        #
+#    Updated: 2021/03/30 23:35:00 by junhypar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,14 @@ SRCS = 	\
 					./builtIn/ft_built_in.c\
 					./builtIn/ft_built_in_support1.c\
 					./builtIn/ft_built_in_support2.c\
+					./builtIn/ft_built_in_support3.c\
 					./builtIn/ft_cd.c\
 					./builtIn/ft_cd_support.c\
 					./builtIn/ft_env.c\
 					./builtIn/ft_exit.c\
 					./builtIn/ft_export.c\
 					./builtIn/ft_export_no_comp.c\
+					./builtIn/ft_unset.c\
 					./builtIn/ft_get_env.c\
 					./builtIn/ft_my_atoi_itoa.c\
 					./builtIn/ft_my_strjoin.c\
