@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termios_util1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/26 16:51:32 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/30 10:00:43 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	do_term_loop(char **line, t_list_info *list_info)
 	long	buff;
 	int		o_row;
 	int		o_col;
-	int		col_max;	
+	int		col_max;
 
 	buff = 0;
 	col_max = get_win_col();
