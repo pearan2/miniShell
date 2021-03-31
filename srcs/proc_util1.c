@@ -6,16 +6,17 @@
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:13:03 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 20:56:11 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/31 21:13:27 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	proc_handle_error(t_info *info, char *path, int errno)
+int	proc_handle_error(t_info *info, char *path, int en)
 {
-	ft_puterror(path, errno);
-	info->built_result_num = errno;
+	ft_puterror(path, en);
+	info->built_result_num = en;
+	return (0);
 }
 
 int	proc_inner(t_info *info, char *path)
