@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 17:31:41 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:50:48 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,6 @@ int					is_home_dir(char *str, int *i);
 void				no_component_echo(int fd[2]);
 int					check_single_quote(t_info *info, int i);
 int					is_old_dir_flag(char *str);
+void				ft_echo_finish(t_info *info, int fd[2], int tag);
 
 #endif

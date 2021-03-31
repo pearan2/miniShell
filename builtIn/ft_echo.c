@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:12:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 18:02:18 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:53:31 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,27 @@ static void	check_env(t_info *info, int i)
 	}
 }
 
-static void	check_flag(t_info *info, int *i, int *out)
+static int	check_flag(t_info *info, int i, int *out)
 {
 	int		j;
 
-	while (info->opt[*i])
+	if (info->opt[i][0] == '-')
 	{
-		if (info->opt[*i][0] == '-')
+		j = 0;
+		while (info->opt[i][++j])
 		{
-			j = 0;
-			while (info->opt[*i][++j])
+			if (info->opt[i][j] != 'n')
 			{
-				if (info->opt[*i][j] != 'n')
-					break ;
-			}
-			if (info->opt[*i][j] != 0)
+				return (0);
 				break ;
-			*out = 1;
+			}
 		}
-		else
-			break ;
-		*i += 1;
+		if (info->opt[i][j] == 0)
+			*out = 1;
 	}
+	else
+		return (0);
+	return (1);
 }
 
 static void	ft_print_echo(t_info *info, int i)
@@ -99,6 +98,7 @@ void		ft_echo(t_info *info, int fd[2])
 {
 	int		i;
 	int		flag;
+	int		flag2;
 	int		tag;
 
 	tag = 0;
@@ -108,18 +108,11 @@ void		ft_echo(t_info *info, int fd[2])
 	while (info->opt[++i])
 	{
 		flag = check_single_quote(info, i);
-		check_flag(info, &i, &tag);
+		flag2 = check_flag(info, i, &tag);
 		if (!flag)
 			check_env(info, i);
-		ft_print_echo(info, i);
+		if (!flag2)
+			ft_print_echo(info, i);
 	}
-	if (!tag)
-	{
-		if (info->is_print == 0)
-			write(info->fd_stdout, "\n", 1);
-		else
-			write(1, "\n", 1);
-	}
-	write(fd[1], "0\n", 2);
-	exit(0);
+	ft_echo_finish(info, fd, tag);
 }

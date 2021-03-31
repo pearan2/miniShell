@@ -6,11 +6,24 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 15:32:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 15:43:41 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:50:18 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void		ft_echo_finish(t_info *info, int fd[2], int tag)
+{
+	if (!tag)
+	{
+		if (info->is_print == 0)
+			write(info->fd_stdout, "\n", 1);
+		else
+			write(1, "\n", 1);
+	}
+	write(fd[1], "0\n", 2);
+	exit(0);
+}
 
 void		no_component_echo(int fd[2])
 {
