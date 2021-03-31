@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:13:03 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 02:23:58 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 02:40:24 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	proc_inner(t_info *info, char *path)
 	else
 	{
 		waitpid(pid, &status, 0);
+		info->built_result_num = 0;
 		if (status != 0 && status != 2)
 		{
 			ft_puterror(path, status / 255);
