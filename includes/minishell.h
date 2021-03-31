@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 15:03:50 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 15:40:48 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ char				*combine_str2(char **pwd);
 char				*result_of_combine(char **p_str, char *out,
 		char *temp, int flag);
 int					is_home_dir(t_info *info, char *str, int *i);
+void				no_component_echo(int fd[2]);
+int					check_single_quote(t_info *info, int i);
 /**/
 
 #endif 

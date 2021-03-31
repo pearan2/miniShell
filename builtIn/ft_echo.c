@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:12:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 11:42:43 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 15:45:53 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,19 @@ static void	check_flag(t_info *info, int fd[2], int *i, int *out)
 	}
 }
 
-static void ft_print_echo(t_info *info, int i, int fd[2], int flag)
+static void ft_print_echo(t_info *info, int i, int fd[2])
 {
-	while (info->opt[i])
+	if (info->is_print == 0)
+		write(info->fd_stdout, info->opt[i], ft_strlen(info->opt[i]));
+	else
+		write(1, info->opt[i], ft_strlen(info->opt[i]));
+	i++;
+	if (info->opt[i])
 	{
 		if (info->is_print == 0)
-			write(info->fd_stdout, info->opt[i], ft_strlen(info->opt[i]));
+			write(info->fd_stdout, " ", 1);
 		else
-			write(1, info->opt[i], ft_strlen(info->opt[i]));
-		i++;
-		if (info->opt[i])
-		{
-			if (info->is_print == 0)
-				write(info->fd_stdout, " ", 1);
-			else
-				write(1, " ", 1);
-		}
-	}
-	if (!flag)
-	{
-		if (info->is_print == 0)
-			write(info->fd_stdout, "\n", 1);
-		else
-			write(1, "\n", 1);
+			write(1, " ", 1);
 	}
 }
 
@@ -97,18 +87,23 @@ void		ft_echo(t_info *info, int fd[2])
 
 	tag = 0;
 	if (info->opt[1] == 0)
+		no_component_echo(fd);
+	i = 0;
+	while (info->opt[++i])
 	{
-		write(1, "\n", 1);
-		write(fd[1], "0\n", 2);
-		exit(0);
+		flag = check_single_quote(info, i);
+		check_flag(info, fd, &i, &tag);
+		if (!flag)
+			check_env(info, i);
+		ft_print_echo(info, i, fd);
 	}
-	i = 1;
-	flag = 0;
-	check_flag(info, fd, &i, &flag);
-	j = i - 1;
-	while (info->opt[++j])
-		check_env(info, j);
-	ft_print_echo(info, i, fd, flag);
+	if (!tag)
+	{
+		if (info->is_print == 0)
+			write(info->fd_stdout, "\n", 1);
+		else
+			write(1, "\n", 1);
+	}
 	write(fd[1], "0\n", 2);
 	exit(0);
 }
