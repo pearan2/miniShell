@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 07:48:57 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 14:12:20 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 15:03:16 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	scan_command(char *str)
 	return (1);
 }
 
-static char *combine_str2(char **pwd)
+char		 *combine_str2(char **pwd)
 {
 	int		i;
 	int		len;
@@ -60,26 +60,14 @@ static char *combine_str(char *pwd, char *temp, int flag)
 
 	out = ft_strdup(pwd);
 	p_str = ft_split(out, "/");
-	if (flag > 0)
-	{
-		del = out;
-		out = my_strjoin(out, "/");
-		free(del);
-		del = out;
-		out = my_strjoin(out, temp);
-		free(del);
-	}
-	else
-	{
-		del = out;
-		out = combine_str2(p_str);
-		free(del);
-	}
+	del = out;
+	out = result_of_combine(p_str, out, temp, flag); 
+	free(del);
 	ft_split_free2(p_str);
 	return (out);
 }
 
-static char	*pasing_dir(char *pwd, char *temp)
+static char	*pasing_dir(t_info *info, char *pwd, char *temp)
 {
 	char	**t_str;
 	char	*del;
@@ -89,7 +77,10 @@ static char	*pasing_dir(char *pwd, char *temp)
 
 	i = 0;
 	t_str = ft_split(temp, "/");
-	out = ft_strdup(pwd);
+	if (is_home_dir(info, t_str[0], &i))
+		out = get_env(info, "HOME");
+	else
+		out = ft_strdup(pwd);
 	while(t_str[i])
 	{
 		flag = scan_command(t_str[i]);
@@ -125,7 +116,7 @@ void		ft_cd(t_info *info, int fd[2])
 			}
 		}
 		temp = ft_strdup(info->opt[1]);
-		n_pwd = pasing_dir(pwd, temp);
+		n_pwd = pasing_dir(info, pwd, temp);
 		free(pwd);
 		free(temp);
 		do_cd(info, old, n_pwd, fd);

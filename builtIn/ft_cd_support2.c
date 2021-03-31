@@ -6,11 +6,26 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 14:10:54 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:23:59 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char		*combine_str_support(char *out, char *temp)
+{
+	char	*del;
+	char	*out2;
+
+	out2 = ft_strdup(out);
+	del = out2;
+	out2 = my_strjoin(out2, "/");
+	free(del);
+	del = out2;
+	out2 = my_strjoin(out2, temp);
+	free(del);
+	return (out2);
+}
 
 void		do_cd(t_info *info, char *old, char *pwd, int fd[2])
 {

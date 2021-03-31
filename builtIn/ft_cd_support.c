@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:17:48 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 14:05:52 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:28:30 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		rebase_input_cd(t_info *info, int i)
 	}
 }
 
-static int	is_can_open(char *pwd)
+int			is_can_open(char *pwd)
 {
 	DIR		*dir;
 	int		flag;

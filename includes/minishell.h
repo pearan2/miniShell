@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 14:00:25 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 15:03:50 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void				ft_echo(t_info *info, int fd[2]);
 void				no_comp_export(t_info *info, int fd[2]);
 void				do_cd(t_info *info, char *old, char *pwd, int fd[2]);
 void				go_home(t_info *info, char *old, int fd[2]);
+void				go_old(t_info *info, char *old, int fd[2]);
 int					ft_strncmp(char *s1, char *s2, int n);
 long				my_atoi(char *str);
 char				*my_itoa(long num);
@@ -155,6 +156,12 @@ void				ft_parent_cd(t_info *info, int fd[2]);
 void				ft_parent_export(t_info *info, int fd[2]);
 void				ft_parent_unset(t_info *info, int fd[2]);
 char				*change_input_to_env(t_info *info, char *str);
+char				*combine_str_support(char *out, char *temp);
+int					is_can_open(char *pwd);
+char				*combine_str2(char **pwd);
+char				*result_of_combine(char **p_str, char *out,
+		char *temp, int flag);
+int					is_home_dir(t_info *info, char *str, int *i);
 /**/
 
 #endif 

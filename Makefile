@@ -6,7 +6,7 @@
 #    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/31 14:06:27 by junhypar         ###   ########.fr        #
+#    Updated: 2021/03/31 14:30:45 by junhypar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS = 	\
 					./builtIn/ft_cd.c\
 					./builtIn/ft_cd_support.c\
 					./builtIn/ft_cd_support2.c\
+					./builtIn/ft_cd_support3.c\
 					./builtIn/ft_env.c\
 					./builtIn/ft_exit.c\
 					./builtIn/ft_export.c\
