@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 07:48:57 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 14:02:37 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:12:20 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,11 @@ void		ft_cd(t_info *info, int fd[2])
 		rebase_input_cd(info, 1);
 		if (info->opt[1][0] == '-')
 		{
-			free(pwd);
-			go_home(info, old, fd);
+			if (info->opt[1][1] == '\0')
+			{
+				free(pwd);
+				go_old(info, old, fd);
+			}
 		}
 		temp = ft_strdup(info->opt[1]);
 		n_pwd = pasing_dir(pwd, temp);

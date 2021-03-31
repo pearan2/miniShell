@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 14:04:48 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:10:54 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,26 @@ void		do_cd(t_info *info, char *old, char *pwd, int fd[2])
 	temp = pwd;
 	pwd = my_strjoin("PWD=", pwd);
 	free(temp);
+	write(fd[1], old, ft_strlen(old));
+	write(fd[1], "\n", 1);
+	write(fd[1], pwd, ft_strlen(pwd));
+	write(fd[1], "\n", 1);
+	write(fd[1], "0\n", 2);
+	free(pwd);
+	free(old);
+	exit(10);
+}
+
+void		go_old(t_info *info, char *old, int fd[2])
+{
+	char	*pwd;
+	char	*home;
+
+	home = get_env(info, "OLDPWD");
+	pwd = my_strjoin("PWD=", home);
+	write(1, home, ft_strlen(home));
+	write(1, "\n", 1);
+	free(home);
 	write(fd[1], old, ft_strlen(old));
 	write(fd[1], "\n", 1);
 	write(fd[1], pwd, ft_strlen(pwd));
