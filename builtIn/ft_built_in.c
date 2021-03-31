@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_built_in.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
+/*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 13:34:06 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:11:55 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,8 @@ static void	do_child(t_info *info, int order, int fd[2])
 void		do_parent(t_info *info, int status, int fd[2])
 {
 	char	*result;
-	long	stat;
 	int		gnl;
-	int		i;
-	char	buf[10];
-	int		len;
-	int		num_env;
-//fd[0] 내부값이 20 == exit
 
-//	printf("status/256 = %d\n",status);
 	if (status == 20)
 		ft_parent_exit(info, fd);
 	else if (status == 10)
@@ -78,33 +71,40 @@ void		do_parent(t_info *info, int status, int fd[2])
 	}
 }
 
-int			*ft_built_in(t_info *info)
+static void	ft_print_error_built(int flag)
 {
-	int		order;
-	pid_t	pid;
-	pid_t	pwait;
-	int		fd[2]; //0은 무조건 읽기전용 1은 무조건 쓰기전용
-	int		status;
-
-	order = check_order(info->opt[0]);
-	if (pipe(fd) == -1)
+	if (flag == 1)
 	{
 		write(2, "pipe error\n", 11);
 		exit(1);
 	}
-	pid = fork();
-	if (pid > 0)
-	{
-		pwait = wait(&status);
-	//	printf("status = %d\n",status);
-		do_parent(info, status / 256, fd);
-	}
-	else if (pid == 0)
-		do_child(info, order, fd);
 	else
 	{
 		write(2, "fork error\n", 11);
 		exit(1);
 	}
-	return(0);
+}
+
+int			*ft_built_in(t_info *info)
+{
+	int		order;
+	pid_t	pid;
+	pid_t	pwait;
+	int		fd[2];
+	int		status;
+
+	order = check_order(info->opt[0]);
+	if (pipe(fd) == -1)
+		ft_print_error_built(1);
+	pid = fork();
+	if (pid > 0)
+	{
+		pwait = wait(&status);
+		do_parent(info, status / 256, fd);
+	}
+	else if (pid == 0)
+		do_child(info, order, fd);
+	else
+		ft_print_error_built(2);
+	return (0);
 }

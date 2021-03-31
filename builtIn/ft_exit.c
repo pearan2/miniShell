@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:21:50 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 00:20:08 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:35:23 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static int		exit_support(t_info *info, int cnt)
 	while (info->opt[1][i])
 	{
 		if (info->opt[1][i] < '0' || info->opt[1][i] > '9')
-			return (2); //exit 뒤에는 숫자요소 1개만 와야되는데 문자요소가옴
+			return (2);
 		i++;
 	}
 	if (cnt > 2)
-		return (3); //요소가 많다
-	return (1); //정상
+		return (3);
+	return (1);
 }
 
 static void		exit_result_support(int is_print, int flag)
@@ -78,10 +78,11 @@ void			ft_exit(t_info *info, int fd[2])
 	int			flag;
 
 	i = 0;
+	flag = 0;
 	while (info->opt[i])
 		i++;
 	if (i == 1)
-		exit_result(info, 0, fd);
+		exit_result(info, flag, fd);
 	else
 		flag = exit_support(info, i);
 	exit_result(info, flag, fd);

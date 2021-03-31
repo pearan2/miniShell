@@ -6,11 +6,12 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 10:34:36 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 16:40:38 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:15:54 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 static int	find_pwd(char *str)
 {
 	if (str[0] == 'P' && str[1] == 'W' && str[2] == 'D' && str[3] == '=')
@@ -18,7 +19,7 @@ static int	find_pwd(char *str)
 	return (-1);
 }
 
-static void ft_pwd_support(t_info *info, char *env, int len, int flag)
+static void	ft_pwd_support(t_info *info, char *env, int len, int flag)
 {
 	if (flag == 1)
 	{
@@ -39,7 +40,7 @@ void		ft_pwd(t_info *info, int fd[2])
 	int		len;
 
 	i = 0;
-	while(info->env[i])
+	while (info->env[i])
 	{
 		flag = find_pwd(info->env[i]);
 		if (flag == 1)
@@ -49,7 +50,7 @@ void		ft_pwd(t_info *info, int fd[2])
 				ft_pwd_support(info, info->env[i], len, 1);
 			else
 				ft_pwd_support(info, info->env[i], len, 2);
-			break;
+			break ;
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 14:11:30 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/25 14:37:06 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:13:14 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long		my_atoi(char *str)
 		i = 1;
 		mine = 1;
 	}
-	while(str[i])
+	while (str[i])
 	{
 		out *= 10;
 		out += (str[i] - '0');
@@ -47,7 +47,7 @@ static void	support_itoa(long *num, int *mine, int *len)
 		*mine = 1;
 		*len += 1;
 	}
-	while(num2)
+	while (num2)
 	{
 		*len += 1;
 		num2 /= 10;
@@ -69,7 +69,7 @@ char		*my_itoa(long num)
 	ft_salloc((void*)&out, sizeof(char), len + 1);
 	i = len;
 	out[i] = '\0';
-	while(i--)
+	while (i--)
 	{
 		if (mine == 1 && i == 0)
 			out[i] = '-';

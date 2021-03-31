@@ -6,20 +6,20 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:57:50 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 17:15:43 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:15:36 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void write_export(t_info *info, char **str, int fd[2])
+static void	write_export(t_info *info, char **str, int fd[2])
 {
 	int		i;
 	int		len;
 
 	len = 0;
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		len = ft_strlen(str[i]);
 		if (info->is_print == 0)
@@ -39,23 +39,24 @@ static void write_export(t_info *info, char **str, int fd[2])
 	write(fd[1], "0\n", 2);
 	exit(0);
 }
-static char **sort_env(t_info *info, int len)
+
+static char	**sort_env(t_info *info, int len)
 {
 	char	**out;
 	char	*temp;
 	int		i;
-	int		j;	
-	
+	int		j;
+
 	ft_salloc((void**)&out, sizeof(char *), len);
 	i = -1;
-	while(++i < len)
+	while (++i < len)
 		out[i] = ft_strdup(info->env[i]);
 	out[len] = NULL;
 	i = -1;
-	while(++i < len)
+	while (++i < len)
 	{
 		j = -1;
-		while(++j < len - 1)
+		while (++j < len - 1)
 		{
 			if (ft_strcmp(out[j], out[j + 1]) > 0)
 			{
@@ -67,13 +68,14 @@ static char **sort_env(t_info *info, int len)
 	}
 	return (out);
 }
+
 void		no_comp_export(t_info *info, int fd[2])
 {
 	int		env_len;
 	char	**sort;
 
 	env_len = 0;
-	while(info->env[env_len])
+	while (info->env[env_len])
 		env_len++;
 	sort = sort_env(info, env_len);
 	write_export(info, sort, fd);

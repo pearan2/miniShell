@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:17:48 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 14:28:30 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:12:55 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,19 @@ static void	rebase_cd(t_info *info, int i)
 	temp2 = info->opt[i];
 	info->opt[i] = temp;
 	free(temp2);
-}	
+}
 
 void		rebase_input_cd(t_info *info, int i)
 {
 	int		j;
 
 	j = 0;
-	while(info->opt[i][j])
+	while (info->opt[i][j])
 	{
 		if (info->opt[i][j] == '$')
 		{
 			rebase_cd(info, i);
-			break;
+			break ;
 		}
 		j++;
 	}

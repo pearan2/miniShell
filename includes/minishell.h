@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 15:40:48 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:47:06 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ char				*my_strjoin(char *s1, char *s2);
 char				*get_env(t_info *info, char *str);
 char				*get_env_full(t_info *info, char *str);
 int					get_env_num(t_info *info, char *str);
+void				rebase_input(t_info *info, int i);
 void				rebase_input_cd(t_info *info, int i);
 void				ft_parent_exit(t_info *info, int fd[2]);
 void				ft_parent_cd(t_info *info, int fd[2]);
@@ -161,9 +162,10 @@ int					is_can_open(char *pwd);
 char				*combine_str2(char **pwd);
 char				*result_of_combine(char **p_str, char *out,
 		char *temp, int flag);
-int					is_home_dir(t_info *info, char *str, int *i);
+int					is_home_dir(char *str, int *i);
 void				no_component_echo(int fd[2]);
 int					check_single_quote(t_info *info, int i);
+int					is_old_dir_flag(char *str);
 /**/
 
 #endif 

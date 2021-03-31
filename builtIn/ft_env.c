@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:43:48 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 16:52:53 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:13:38 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_available(char *str)
 	int		i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '=')
 			return (1);
@@ -33,7 +33,7 @@ void		ft_env(t_info *info, int fd[2])
 
 	len = 0;
 	i = 0;
-	while(info->env[i])
+	while (info->env[i])
 	{
 		if (is_available(info->env[i]))
 		{
@@ -41,12 +41,12 @@ void		ft_env(t_info *info, int fd[2])
 			if (info->is_print == 0)
 			{
 				write(info->fd_stdout, info->env[i], len);
-				write(info->fd_stdout, "\n", 1);	
+				write(info->fd_stdout, "\n", 1);
 			}
 			else
 			{
 				write(1, info->env[i], len);
-				write(1, "\n", 1);	
+				write(1, "\n", 1);
 			}
 		}
 		i++;

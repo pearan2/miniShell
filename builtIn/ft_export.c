@@ -6,17 +6,39 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:37:03 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 10:45:58 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:01:43 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	rebase_input(t_info *info, int i)
+static char	*rebase_combine_input(char **split)
+{
+	char	*out;
+	char	*temp;
+	int		i;
+
+	i = 0;
+	out = my_strjoin(split[0], "=");
+	while (split[++i])
+	{
+		temp = out;
+		out = my_strjoin(temp, split[i]);
+		free(temp);
+		if (split[i + 1] != NULL)
+		{
+			temp = out;
+			out = my_strjoin(temp, "=");
+			free(temp);
+		}
+	}
+	return (out);
+}
+
+void		rebase_input(t_info *info, int i)
 {
 	char	**split;
 	char	*temp;
-	char	*temp2;
 	int		j;
 
 	j = -1;
@@ -27,11 +49,9 @@ static void	rebase_input(t_info *info, int i)
 		split[j] = change_input_to_env(info, split[j]);
 		free(temp);
 	}
-	temp = my_strjoin(split[0], "=");
-	temp2 = info->opt[i];
-	info->opt[i] = my_strjoin(temp, split[1]);
+	temp = info->opt[i];
+	info->opt[i] = rebase_combine_input(split);
 	ft_split_free2(split);
-	free(temp2);
 	free(temp);
 }
 
@@ -40,12 +60,12 @@ static int	is_available(t_info *info, int i)
 	int		j;
 
 	j = 0;
-	while(info->opt[i][j])
+	while (info->opt[i][j])
 	{
 		if (info->opt[i][j] == '$')
 		{
 			rebase_input(info, i);
-			break;
+			break ;
 		}
 		j++;
 	}
@@ -54,7 +74,7 @@ static int	is_available(t_info *info, int i)
 	if (info->opt[i][0] >= '0' && info->opt[i][0] <= '9')
 		return (1);
 	j = 0;
-	while(info->opt[i][j])
+	while (info->opt[i][j])
 	{
 		if (info->opt[i][j] == '\'' || info->opt[i][j] == '\"')
 			return (1);

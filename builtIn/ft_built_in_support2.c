@@ -6,19 +6,19 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 11:02:16 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:16:38 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char **add_env(t_info *info, char *env, int len)
+static char	**add_env(t_info *info, char *env, int len)
 {
 	char	**data;
 	int		i;
 
 	i = -1;
-	ft_salloc((void**)&data,sizeof(char *), len + 2);
+	ft_salloc((void**)&data, sizeof(char *), len + 2);
 	while (++i < len)
 		data[i] = ft_strdup(info->env[i]);
 	data[i] = ft_strdup(env);
@@ -26,7 +26,17 @@ static char **add_env(t_info *info, char *env, int len)
 	return (data);
 }
 
-static void put_env(t_info *info, char *result)
+static int	len_of_env(t_info *info)
+{
+	int		out;
+
+	out = 0;
+	while (info->env[out])
+		out++;
+	return (out);
+}
+
+static void	put_env(t_info *info, char *result)
 {
 	int		env_num;
 	int		len;
@@ -35,13 +45,13 @@ static void put_env(t_info *info, char *result)
 	char	*temp2;
 
 	sp_result = ft_split(result, "=");
-	env_num = get_env_num(info, sp_result[0]);
+	temp2 = my_strjoin(sp_result[0], "=");
+	env_num = get_env_num(info, temp2);
+	free(temp2);
 	ft_split_free2(sp_result);
 	if (env_num == -1)
 	{
-		len = 0;
-		while (info->env[len])
-			len++;
+		len = len_of_env(info);
 		temp = info->env;
 		info->env = add_env(info, result, len);
 		ft_split_free2(temp);
@@ -58,16 +68,15 @@ void		ft_parent_export(t_info *info, int fd[2])
 {
 	int		i;
 	char	*result;
-	char	**temp;
 
 	i = 0;
-	while(1)
+	while (1)
 	{
 		get_next_line(fd[0], &result);
 		if (ft_strcmp(result, "export_end") == 0)
 		{
 			free(result);
-			break;
+			break ;
 		}
 		else
 		{

@@ -6,13 +6,28 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 15:03:39 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:18:55 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int			is_home_dir(t_info *info, char *str, int *i)
+int			is_old_dir_flag(char *str)
+{
+	if (str != NULL)
+	{
+		if (str[0] == '-')
+		{
+			if (str[1] == '\0')
+			{
+				return (1);
+			}
+		}
+	}
+	return (0);
+}
+
+int			is_home_dir(char *str, int *i)
 {
 	if (str != NULL)
 	{

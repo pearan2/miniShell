@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:02:19 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 13:34:42 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:31:41 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int			get_env_num(t_info *info, char *str)
 	i = 0;
 	temp = ft_strdup(str);
 	out = -1;
-	while(info->env[i] != NULL)
+	while (info->env[i] != NULL)
 	{
 		if (ft_strncmp(info->env[i], temp, ft_strlen(temp)) == 0)
 		{
 			out = i;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -45,14 +45,14 @@ char		*get_env(t_info *info, char *str)
 	len = 0;
 	temp = my_strjoin(str, "=");
 	out = ft_strdup("");
-	while(info->env[i] != NULL)
+	while (info->env[i] != NULL)
 	{
 		if (ft_strncmp(info->env[i], temp, ft_strlen(temp)) == 0)
 		{
 			len = ft_strlen(info->env[i]);
 			ft_salloc((void*)&out, sizeof(char *), len - ft_strlen(temp) - 1);
 			out = ft_strdup(info->env[i] + ft_strlen(temp));
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -60,7 +60,7 @@ char		*get_env(t_info *info, char *str)
 	return (out);
 }
 
-static char *support_c_i_t_env2(char **split)
+static char	*support_c_i_t_env2(char **split)
 {
 	int		len;
 	char	*temp;
@@ -128,7 +128,7 @@ char		*change_input_to_env(t_info *info, char *str)
 			free(temp3);
 			free(temp);
 			free(temp2);
-			break;
+			break ;
 		}
 	}
 	return (out);

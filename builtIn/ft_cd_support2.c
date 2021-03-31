@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 14:23:59 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 15:51:49 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char		*combine_str_support(char *out, char *temp)
 void		do_cd(t_info *info, char *old, char *pwd, int fd[2])
 {
 	char	*temp;
-	int		hi;
 
 	if (is_can_open(pwd))
 	{

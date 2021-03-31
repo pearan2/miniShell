@@ -6,19 +6,37 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:12:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 15:45:53 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:03:57 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	rebase_input(t_info *info, int i)
+static void	rebase_input_echo(t_info *info, int i)
 {
 	char	*temp;
+	int		j;
+	int		flag;
 
-	temp = info->opt[i];
-	info->opt[i] = change_input_to_env(info, temp);
-	free(temp);
+	flag = 0;
+	j = 0;
+	while (info->opt[i][j])
+	{
+		if (info->opt[i][j] == '=')
+		{
+			flag = 1;
+			break ;
+		}
+		j++;
+	}
+	if (flag)
+		rebase_input(info, i);
+	else
+	{
+		temp = info->opt[i];
+		info->opt[i] = change_input_to_env(info, temp);
+		free(temp);
+	}
 }
 
 static void	check_env(t_info *info, int i)
@@ -26,18 +44,18 @@ static void	check_env(t_info *info, int i)
 	int		j;
 
 	j = 0;
-	while(info->opt[i][j])
+	while (info->opt[i][j])
 	{
 		if (info->opt[i][j] == '$')
 		{
-			rebase_input(info, i);
-			break;
+			rebase_input_echo(info, i);
+			break ;
 		}
 		j++;
 	}
 }
 
-static void	check_flag(t_info *info, int fd[2], int *i, int *out)
+static void	check_flag(t_info *info, int *i, int *out)
 {
 	int		j;
 
@@ -49,19 +67,19 @@ static void	check_flag(t_info *info, int fd[2], int *i, int *out)
 			while (info->opt[*i][++j])
 			{
 				if (info->opt[*i][j] != 'n')
-					break;
+					break ;
 			}
 			if (info->opt[*i][j] != 0)
-				break;
+				break ;
 			*out = 1;
 		}
 		else
-			break;
+			break ;
 		*i += 1;
 	}
 }
 
-static void ft_print_echo(t_info *info, int i, int fd[2])
+static void	ft_print_echo(t_info *info, int i)
 {
 	if (info->is_print == 0)
 		write(info->fd_stdout, info->opt[i], ft_strlen(info->opt[i]));
@@ -77,11 +95,9 @@ static void ft_print_echo(t_info *info, int i, int fd[2])
 	}
 }
 
-
 void		ft_echo(t_info *info, int fd[2])
 {
 	int		i;
-	int		j;
 	int		flag;
 	int		tag;
 
@@ -92,10 +108,10 @@ void		ft_echo(t_info *info, int fd[2])
 	while (info->opt[++i])
 	{
 		flag = check_single_quote(info, i);
-		check_flag(info, fd, &i, &tag);
+		check_flag(info, &i, &tag);
 		if (!flag)
 			check_env(info, i);
-		ft_print_echo(info, i, fd);
+		ft_print_echo(info, i);
 	}
 	if (!tag)
 	{

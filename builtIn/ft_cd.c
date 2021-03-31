@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 07:48:57 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 15:03:16 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:24:06 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	scan_command(char *str)
 	return (1);
 }
 
-char		 *combine_str2(char **pwd)
+char		*combine_str2(char **pwd)
 {
 	int		i;
 	int		len;
@@ -32,14 +32,14 @@ char		 *combine_str2(char **pwd)
 	char	*out;
 
 	len = 0;
-	while(pwd[len])
+	while (pwd[len])
 		len++;
 	i = 0;
 	if ((len - 1) <= 0)
 		out = ft_strdup("/");
 	else
 		out = ft_strdup("");
-	while(i < len - 1)
+	while (i < len - 1)
 	{
 		del = out;
 		out = my_strjoin(out, "/");
@@ -52,7 +52,7 @@ char		 *combine_str2(char **pwd)
 	return (out);
 }
 
-static char *combine_str(char *pwd, char *temp, int flag)
+static char	*combine_str(char *pwd, char *temp, int flag)
 {
 	char	*out;
 	char	**p_str;
@@ -61,7 +61,7 @@ static char *combine_str(char *pwd, char *temp, int flag)
 	out = ft_strdup(pwd);
 	p_str = ft_split(out, "/");
 	del = out;
-	out = result_of_combine(p_str, out, temp, flag); 
+	out = result_of_combine(p_str, out, temp, flag);
 	free(del);
 	ft_split_free2(p_str);
 	return (out);
@@ -77,11 +77,11 @@ static char	*pasing_dir(t_info *info, char *pwd, char *temp)
 
 	i = 0;
 	t_str = ft_split(temp, "/");
-	if (is_home_dir(info, t_str[0], &i))
+	if (is_home_dir(t_str[0], &i))
 		out = get_env(info, "HOME");
 	else
 		out = ft_strdup(pwd);
-	while(t_str[i])
+	while (t_str[i])
 	{
 		flag = scan_command(t_str[i]);
 		if (flag)
@@ -100,25 +100,19 @@ void		ft_cd(t_info *info, int fd[2])
 	char	*old;
 	char	*pwd;
 	char	*n_pwd;
-	char	*temp;
 
 	pwd = get_env(info, "PWD");
 	old = my_strjoin("OLDPWD=", pwd);
 	if (info->opt[1] != 0)
 	{
 		rebase_input_cd(info, 1);
-		if (info->opt[1][0] == '-')
+		if (is_old_dir_flag(info->opt[1]))
 		{
-			if (info->opt[1][1] == '\0')
-			{
-				free(pwd);
-				go_old(info, old, fd);
-			}
+			free(pwd);
+			go_old(info, old, fd);
 		}
-		temp = ft_strdup(info->opt[1]);
-		n_pwd = pasing_dir(info, pwd, temp);
+		n_pwd = pasing_dir(info, pwd, info->opt[1]);
 		free(pwd);
-		free(temp);
 		do_cd(info, old, n_pwd, fd);
 	}
 	else
