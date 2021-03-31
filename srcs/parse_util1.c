@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 13:32:05 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 14:09:29 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,11 @@ int	make_info(t_info *info, char **ret)
 		else if (ft_strcmp(ret[idx], ">>") == 0)
 			set_stdout_info(info, str_trim_free(&ret[++idx]), 1);
 		else
-			result = ft_string_append(&(info->opt), str_trim_free(&ret[idx]));
+			result = ft_string_append(&(info->opt), ret[idx]);
 		if (info->fd_stdout == -1 || info->fd_stdin == -1 || result == 1)
 			return (ft_split_free2(ret));
 	}
+	ft_info_trim(info);
 	ft_split_free2(ret);
 	return (0);
 }

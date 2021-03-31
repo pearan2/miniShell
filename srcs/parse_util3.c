@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:45:40 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 13:18:46 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 14:06:54 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,30 @@ char	*str_trim_free(char **tg)
 	free(*tg);
 	*tg = ret;
 	return (ret);
+}
+
+int		ft_get_info_opt_len(t_info *info)
+{
+	int		idx;
+
+	idx = 0;
+	while (info->opt[idx] != NULL)
+		idx++;
+	return (idx);
+}
+
+void	ft_info_trim(t_info *info)
+{
+	int		idx;
+
+	idx = 0;
+	if (ft_get_info_opt_len(info) == 0)
+		return ;
+	info->opt[0] = str_trim_free(&(info->opt[0]));
+	if (ft_strcmp(info->opt[0], "echo") == 0)
+		return ;
+	else
+		while (info->opt[++idx] != NULL)
+			info->opt[idx] = str_trim_free(&(info->opt[idx]));
+	return ;
 }
