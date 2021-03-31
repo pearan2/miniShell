@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 07:48:57 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 19:32:18 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:13:12 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	scan_command(char *str)
 		else if (str[1] == '.' && str[2] == '\0')
 			return (-1);
 	}
-	return (1);
+	return (99);
 }
 
 char		*combine_str2(char **pwd)
@@ -80,7 +80,7 @@ static char	*pasing_dir(t_info *info, char *pwd, char *temp)
 	if (is_home_dir(t_str[0], &i))
 		out = get_env(info, "HOME");
 	else
-		out = ft_strdup(pwd);
+		out = ft_pasing_dir_support(pwd, temp);
 	while (t_str[i])
 	{
 		flag = scan_command(t_str[i]);
@@ -92,6 +92,7 @@ static char	*pasing_dir(t_info *info, char *pwd, char *temp)
 		}
 		i++;
 	}
+	ft_split_free2(t_str);
 	return (out);
 }
 
@@ -112,12 +113,14 @@ void		ft_cd(t_info *info, int fd[2])
 			go_old(info, old, fd);
 		}
 		n_pwd = pasing_dir(info, pwd, info->opt[1]);
+		if (n_pwd[0] == '\0')
+		{
+			free(n_pwd);
+			n_pwd = ft_strdup("/");
+		}
 		free(pwd);
 		do_cd(info, old, n_pwd, fd);
 	}
 	else
-	{
-		free(pwd);
-		go_home(info, old, fd);
-	}
+		ft_exit_cd_support3(info, old, fd, pwd);
 }

@@ -6,11 +6,28 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:18:55 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:13:55 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void		ft_exit_cd_support3(t_info *info, char *old, int fd[2], char *pwd)
+{
+	free(pwd);
+	go_home(info, old, fd);
+}
+
+char		*ft_pasing_dir_support(char *pwd, char *temp)
+{
+	char	*out;
+
+	if (temp[0] == '/')
+		out = ft_strdup("");
+	else
+		out = ft_strdup(pwd);
+	return (out);
+}
 
 int			is_old_dir_flag(char *str)
 {

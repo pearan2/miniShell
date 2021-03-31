@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 19:33:08 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:13:59 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,5 +168,7 @@ void				no_component_echo(int fd[2]);
 int					check_single_quote(t_info *info, int i);
 int					is_old_dir_flag(char *str);
 void				ft_echo_finish(t_info *info, int fd[2], int tag);
-
+char				*ft_pasing_dir_support(char *pwd, char *temp);
+void				ft_exit_cd_support3(t_info *info, char *old,
+						int fd[2], char *pwd);
 #endif
