@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   string_util2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:37:50 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 17:34:00 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:53:36 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		is_printable(char c)
+int	is_printable(char c)
 {
 	if (c >= 32 && c <= 127)
 		return (1);

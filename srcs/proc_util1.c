@@ -6,11 +6,17 @@
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:13:03 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 20:41:11 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/31 20:56:11 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	proc_handle_error(t_info *info, char *path, int errno)
+{
+	ft_puterror(path, errno);
+	info->built_result_num = errno;
+}
 
 int	proc_inner(t_info *info, char *path)
 {
@@ -34,10 +40,7 @@ int	proc_inner(t_info *info, char *path)
 		g_data.is_fork = 0;
 		info->built_result_num = 0;
 		if (status / 255 != 0)
-		{
-			ft_puterror(path, status / 255);
-			info->built_result_num = status / 255;
-		}
+			proc_handle_error(info, path, status / 255);
 		free(path);
 		return (status);
 	}

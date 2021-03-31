@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 20:39:42 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/31 20:58:06 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define DEL_BUF "\b \b"
 # define QUIT "Quit: 3\n"
 
-typedef struct		s_data
+typedef struct s_data
 {
 	char			*line;
 	int				is_fork;
@@ -45,7 +45,7 @@ typedef struct		s_data
 
 t_data				g_data;
 
-typedef struct		s_info
+typedef struct s_info
 {
 	char			**env;
 	char			**opt;
@@ -56,13 +56,13 @@ typedef struct		s_info
 	int				built_result_num;
 }					t_info;
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_list_info
+typedef struct s_list_info
 {
 	t_list			**head;
 	int				pos;
@@ -126,8 +126,8 @@ void				put_welcome_msg(void);
 void				put_prompt(void);
 void				init_all(t_list_info *list_info, t_info *info,
 						struct termios *save, struct termios *setting);
-void				ft_split_input2_proc_quotes(char *line, char **temp, int idx
-						, char *f_va);
+void				ft_split_input2_proc_quotes(char *line, char **temp,
+						int idx, char *f_va);
 void				ft_split_input2_init_all(char **temp, int *idx,
 						char *f_va, char ***ret);
 void				ft_split_input2_charappend(char ***ret, char **temp);
@@ -170,7 +170,7 @@ char				*combine_str_support(char *out, char *temp);
 int					is_can_open(char *pwd);
 char				*combine_str2(char **pwd);
 char				*result_of_combine(char **p_str, char *out,
-		char *temp, int flag);
+						char *temp, int flag);
 int					is_home_dir(char *str, int *i);
 void				no_component_echo(int fd[2]);
 int					check_single_quote(t_info *info, int i);

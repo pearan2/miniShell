@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termios_util2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:44:08 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 17:53:13 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:54:11 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_cursor_position(int *row, int *col)
 	}
 }
 
-int		ft_nbrlen(int value)
+int	ft_nbrlen(int value)
 {
 	int		ret;
 
@@ -53,13 +53,13 @@ int		ft_nbrlen(int value)
 	return (ret);
 }
 
-int		putchar_tc(int tc)
+int	putchar_tc(int tc)
 {
 	write(1, &tc, 1);
 	return (0);
 }
 
-int		get_win_col(void)
+int	get_win_col(void)
 {
 	struct winsize	w;
 

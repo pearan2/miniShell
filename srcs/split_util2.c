@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_util2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 17:33:27 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:52:59 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_split_free(char **target, unsigned int idx)
 	return (0);
 }
 
-int		ft_split_free2(char **target)
+int	ft_split_free2(char **target)
 {
 	int			idx;
 

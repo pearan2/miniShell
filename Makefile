@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: honlee <honlee@student.42.fr>              +#+  +:+       +#+         #
+#    By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 21:49:15 by honlee            #+#    #+#              #
-#    Updated: 2021/03/31 15:41:09 by junhypar         ###   ########.fr        #
+#    Updated: 2021/03/31 20:58:39 by honlee           ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,11 +70,11 @@ ${NAME}		:
 test		:
 					${CC} ${DCF} -o ${NAME}
 
-fclean		:		clean
+fclean		:		
 					rm -f ${NAME}
 
 clean		:		
-					rm -rf ./forTest/*
+					rm -f ${NAME}
 
 all			:		${NAME}
 

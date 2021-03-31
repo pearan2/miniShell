@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:45:40 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 14:06:54 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 20:51:27 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*str_trim_free(char **tg)
 	return (ret);
 }
 
-int		ft_get_info_opt_len(t_info *info)
+int	ft_get_info_opt_len(t_info *info)
 {
 	int		idx;
 

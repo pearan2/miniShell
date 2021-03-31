@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:54:49 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 20:40:17 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/31 20:52:49 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sigquit_handler(int signo)
 	g_data.signo = signo;
 	if (g_data.is_fork == 1)
 		write(2, QUIT, ft_strlen(QUIT));
-	g_data.signo = 0;	
+	g_data.signo = 0;
 	return ;
 }
 

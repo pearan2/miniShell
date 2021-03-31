@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 20:40:01 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/03/31 20:50:58 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*get_path(t_info *info)
 	return (NULL);
 }
 
-int		do_proc(t_info *info)
+int	do_proc(t_info *info)
 {
 	char	*path;
 
@@ -91,7 +91,7 @@ void	do_loop(char *line, t_info *info)
 	}
 }
 
-int		main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
 	t_info			info;
 	t_list_info		list_info;

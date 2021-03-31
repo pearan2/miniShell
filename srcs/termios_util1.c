@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   termios_util1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 17:34:16 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:53:58 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_term(struct termios *save, struct termios *setting)
 	return ;
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	unsigned int		ret;
 	unsigned int		is_minus;

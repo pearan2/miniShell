@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_util1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:55:54 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 02:12:31 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 20:53:27 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**ft_copy_string_arr(char **target)
 	return (ret);
 }
 
-int		ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	while (1)
 	{
@@ -67,7 +67,7 @@ char	*ft_find_pc(char *tg)
 	return (NULL);
 }
 
-int		ft_string_append(char ***target, char *value)
+int	ft_string_append(char ***target, char *value)
 {
 	char	**temp;
 	int		idx;

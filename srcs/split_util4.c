@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_util4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 14:30:05 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 17:51:26 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:53:11 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**ft_split_input2_free_all(char *line, char *temp, char **ret)
 	return (NULL);
 }
 
-int		ft_split_input2_f_va_zero(char ***ret, char **temp, int *idx,
+int	ft_split_input2_f_va_zero(char ***ret, char **temp, int *idx,
 								char *line)
 {
 	char	sep;
