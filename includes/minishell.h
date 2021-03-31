@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 13:32:59 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 14:00:25 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ char				**ft_split_input2_free_all(char *line, char *temp, char **ret);
 int					ft_split_input2_f_va_zero(char ***ret, char **temp, int *idx,
 								char *line);
 void				ft_free2(char *one, char *two);
+void				ft_info_trim(t_info *info);
 
 /*for test */
 void	show_info(t_info *info);
