@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:02:19 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 11:01:26 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 13:34:42 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	*support_change_input_to_env(t_info *info, char *str)
 		temp = split[len];
 		if (split[len][0] == '?')
 		{
-			out = my_itoa(info->er_num);
+			out = my_itoa(info->built_result_num);
 			split[len] = my_strjoin(out, temp + 1);
 			free(out);
 		}
