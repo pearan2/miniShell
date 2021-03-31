@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:02:19 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 23:39:05 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 11:01:26 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,24 @@ char		*get_env(t_info *info, char *str)
 	return (out);
 }
 
+static char *support_c_i_t_env2(char **split)
+{
+	int		len;
+	char	*temp;
+	char	*out;
+
+	len = 0;
+	out = ft_strdup("");
+	while (split[len])
+	{
+		temp = out;
+		out = my_strjoin(out, split[len]);
+		free(temp);
+		len++;
+	}
+	return (out);
+}
+
 static char	*support_change_input_to_env(t_info *info, char *str)
 {
 	char	**split;
@@ -68,23 +86,22 @@ static char	*support_change_input_to_env(t_info *info, char *str)
 	int		len;
 
 	len = 0;
-	out = ft_strdup("");
 	split = ft_split(str, "$");
 	while (split[len])
 	{
 		temp = split[len];
-		split[len] = get_env(info, temp);
-		free(temp);
-		len++;	
-	}
-	len = 0;
-	while (split[len])
-	{
-		temp = out;
-		out = my_strjoin(out, split[len]);
+		if (split[len][0] == '?')
+		{
+			out = my_itoa(info->er_num);
+			split[len] = my_strjoin(out, temp + 1);
+			free(out);
+		}
+		else
+			split[len] = get_env(info, temp);
 		free(temp);
 		len++;
 	}
+	out = support_c_i_t_env2(split);
 	ft_split_free2(split);
 	return (out);
 }

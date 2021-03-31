@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 00:14:42 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 10:57:10 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct		s_info
 	int				fd_stdout_r;
 	int				is_print;
 	int				built_result_num;
+	int				er_num;
 }					t_info;
 
 typedef struct		s_list
@@ -137,6 +138,7 @@ void				ft_exit(t_info *info, int fd[2]);
 void				ft_cd(t_info *info, int fd[2]);
 void				ft_export(t_info *info, int fd[2]);
 void				ft_unset(t_info *info, int fd[2]);
+void				ft_echo(t_info *info, int fd[2]);
 void				no_comp_export(t_info *info, int fd[2]);
 void				do_cd(t_info *info, char *old, char *pwd, int fd[2]);
 void				go_home(t_info *info, char *old, int fd[2]);

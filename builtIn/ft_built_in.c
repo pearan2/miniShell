@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 00:22:34 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 11:32:55 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int			check_order(char *str)
 
 static void	do_child(t_info *info, int order, int fd[2])
 {
-	if (order == 2)
+	if (order == 1)
+		ft_echo(info, fd);
+	else if (order == 2)
 		ft_cd(info, fd);
 	else if (order == 3)
 		ft_pwd(info, fd);
@@ -74,6 +76,7 @@ void		do_parent(t_info *info, int status, int fd[2])
 		info->built_result_num = my_atoi(result) % 256;
 		free(result);
 	}
+	info->er_num = info->built_result_num;
 }
 
 int			*ft_built_in(t_info *info)

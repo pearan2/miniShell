@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 16:25:03 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 11:00:33 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int	main(int ac, char **av, char **env)
 	ac = 0;
 	av = 0;
 	info.env = ft_copy_string_arr(env);
+	info.er_num = 0;
 	init_all(&list_info, &info, &save, &setting);
 	while (1)
 	{
