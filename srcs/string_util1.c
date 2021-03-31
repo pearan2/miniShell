@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:55:54 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 17:51:14 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 02:12:31 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,27 @@ int		ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-char	*ft_find_pc(char *target)
+char	*ft_find_pc(char *tg)
 {
 	int		idx;
+	char	f_va;
 
-	idx = 0;
-	while (target[idx] != 0)
+	idx = -1;
+	f_va = 0;
+	while (tg[++idx] != 0)
 	{
-		if (target[idx] == '|' || target[idx] == ';')
-			return (&target[idx]);
-		idx++;
+		if (tg[idx] == '\'' || tg[idx] == '\"')
+		{
+			if (f_va == 0)
+				f_va = tg[idx];
+			else
+			{
+				if (f_va == tg[idx])
+					f_va = 0;
+			}
+		}
+		if ((tg[idx] == '|' || tg[idx] == ';') && f_va == 0)
+			return (&tg[idx]);
 	}
 	return (NULL);
 }
