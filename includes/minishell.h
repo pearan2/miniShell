@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 20:13:59 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:39:42 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,16 @@
 # define UP_ARROW 4283163
 # define DOWN_ARROW 4348699
 # define DEL_BUF "\b \b"
+# define QUIT "Quit: 3\n"
 
-char				*g_line;
+typedef struct		s_data
+{
+	char			*line;
+	int				is_fork;
+	int				signo;
+}					t_data;
+
+t_data				g_data;
 
 typedef struct		s_info
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 02:37:29 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 20:40:01 by honlee           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	do_loop(char *line, t_info *info)
 	char	*e;
 
 	s = line;
+	if (ft_strlen(line) == 0)
+		return ;
 	while (1)
 	{
 		e = ft_find_pc(s);
@@ -79,12 +81,7 @@ void	do_loop(char *line, t_info *info)
 		if (e != 0)
 			*e = 0;
 		if (make_info(info, ft_split_input2(str_trim_dup(s))) != 0
-			|| do_proc(info) != 0)
-		{
-			free_info(info);
-			break ;
-		}
-		if (e == NULL)
+			|| do_proc(info) != 0 || e == NULL)
 		{
 			free_info(info);
 			break ;
@@ -108,16 +105,16 @@ int		main(int ac, char **av, char **env)
 	init_all(&list_info, &info, &save, &setting);
 	while (1)
 	{
-		g_line = ft_strdup("");
+		g_data.line = ft_strdup("");
 		tcsetattr(0, TCSANOW, &setting);
-		do_term_loop(&g_line, &list_info);
+		do_term_loop(&(g_data.line), &list_info);
 		tcsetattr(0, TCSANOW, &save);
-		ft_string_trim_free(&g_line);
-		if (check_quotes(g_line) != 0)
+		ft_string_trim_free(&(g_data.line));
+		if (check_quotes(g_data.line) != 0)
 			write(2, "quotes error\n", ft_strlen("quotes error\n"));
 		else
-			do_loop(g_line, &info);
-		free(g_line);
+			do_loop(g_data.line, &info);
+		free(g_data.line);
 		put_prompt();
 	}
 	return (0);
