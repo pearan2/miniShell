@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 00:14:10 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 13:55:52 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,9 @@ void		ft_parent_exit(t_info *info, int fd[2])
 		exit((int)stat);
 }
 
-static void	support_p_cd(t_info *info)
+static void	support_p_cd(t_info *info, int env_num)
 {
-	char	*pwd;
-
-	pwd = get_env(info, "PWD");
-	chdir(pwd);
-	free(pwd);
+	chdir(info->env[env_num] + 4);
 }
 
 void		ft_parent_cd(t_info *info, int fd[2])
@@ -57,7 +53,7 @@ void		ft_parent_cd(t_info *info, int fd[2])
 		info->env[num_env] = ft_strdup(result);
 	}
 	free(result);
-	support_p_cd(info);
+	support_p_cd(info, num_env);
 	get_next_line(fd[0], &result);
 	info->built_result_num = my_atoi(result) % 256;
 	free(result);
