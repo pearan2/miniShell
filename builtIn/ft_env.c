@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:43:48 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:13:38 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:24:01 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_available(char *str)
 	return (0);
 }
 
-void		ft_env(t_info *info, int fd[2])
+void	ft_env(t_info *info, int fd[2])
 {
 	int		i;
 	int		len;

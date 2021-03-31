@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 10:34:36 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:15:54 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:28:05 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_pwd_support(t_info *info, char *env, int len, int flag)
 	}
 }
 
-void		ft_pwd(t_info *info, int fd[2])
+void	ft_pwd(t_info *info, int fd[2])
 {
 	int		i;
 	int		flag;

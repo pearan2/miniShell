@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:12:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 18:53:31 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:23:34 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	ft_print_echo(t_info *info, int i)
 	}
 }
 
-void		ft_echo(t_info *info, int fd[2])
+void	ft_echo(t_info *info, int fd[2])
 {
 	int		i;
 	int		flag;

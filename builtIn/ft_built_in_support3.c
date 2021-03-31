@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:43:42 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:21:25 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	**del_env2(t_info *info, int len, int env_num)
 
 	i = -1;
 	j = 0;
-	ft_salloc((void**)&data, sizeof(char *), len);
+	ft_salloc((void **)&data, sizeof(char *), len);
 	while (++i < len)
 	{
 		if (i != env_num)
@@ -51,7 +51,7 @@ static void	del_env(t_info *info, char *result)
 	}
 }
 
-void		ft_parent_unset(t_info *info, int fd[2])
+void	ft_parent_unset(t_info *info, int fd[2])
 {
 	int		i;
 	char	*result;

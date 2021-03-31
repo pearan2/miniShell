@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 22:55:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:01:05 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:28:41 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static int	is_available(t_info *info, int i)
 	j = 0;
 	while (info->opt[i][j])
 	{
-		if (info->opt[i][j] == '\'' || info->opt[i][j] == '\"' ||
-				info->opt[i][j] == '=')
+		if (info->opt[i][j] == '\'' || info->opt[i][j] == '\"'
+				|| info->opt[i][j] == '=')
 			return (1);
 		j++;
 	}
@@ -66,7 +66,7 @@ static void	ft_unset_end(int tag, int fd[2])
 	exit(40);
 }
 
-void		ft_unset(t_info *info, int fd[2])
+void	ft_unset(t_info *info, int fd[2])
 {
 	int		i;
 	int		flag;

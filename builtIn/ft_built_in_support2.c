@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:43:02 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:20:47 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	**add_env(t_info *info, char *env, int len)
 	int		i;
 
 	i = -1;
-	ft_salloc((void**)&data, sizeof(char *), len + 2);
+	ft_salloc((void **)&data, sizeof(char *), len + 2);
 	while (++i < len)
 		data[i] = ft_strdup(info->env[i]);
 	data[i] = ft_strdup(env);
@@ -62,7 +62,7 @@ static void	put_env(t_info *info, char *result)
 	}
 }
 
-void		ft_parent_export(t_info *info, int fd[2])
+void	ft_parent_export(t_info *info, int fd[2])
 {
 	int		i;
 	char	*result;

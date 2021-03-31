@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:02:19 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:41:55 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:26:46 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int			get_env_num(t_info *info, char *str)
+int	get_env_num(t_info *info, char *str)
 {
 	char	*temp;
 	int		i;
@@ -25,8 +25,8 @@ int			get_env_num(t_info *info, char *str)
 	{
 		if (ft_strncmp(info->env[i], temp, ft_strlen(temp)) == 0)
 		{
-			if (info->env[i][ft_strlen(temp)] == '=' ||
-					info->env[i][ft_strlen(temp)] == '\0')
+			if (info->env[i][ft_strlen(temp)] == '='
+					|| info->env[i][ft_strlen(temp)] == '\0')
 			{
 				out = i;
 				break ;
@@ -38,7 +38,7 @@ int			get_env_num(t_info *info, char *str)
 	return (out);
 }
 
-char		*get_env(t_info *info, char *str)
+char	*get_env(t_info *info, char *str)
 {
 	char	*out;
 	char	*temp;
@@ -54,7 +54,7 @@ char		*get_env(t_info *info, char *str)
 		if (ft_strncmp(info->env[i], temp, ft_strlen(temp)) == 0)
 		{
 			len = ft_strlen(info->env[i]);
-			ft_salloc((void*)&out, sizeof(char *), len - ft_strlen(temp) - 1);
+			ft_salloc((void *)&out, sizeof(char *), len - ft_strlen(temp) - 1);
 			out = ft_strdup(info->env[i] + ft_strlen(temp));
 			break ;
 		}
@@ -110,7 +110,7 @@ static char	*support_change_input_to_env(t_info *info, char *str)
 	return (out);
 }
 
-char		*change_input_to_env(t_info *info, char *str)
+char	*change_input_to_env(t_info *info, char *str)
 {
 	char	*out;
 	int		i;

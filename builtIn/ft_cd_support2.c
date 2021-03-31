@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 20:03:21 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:23:01 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char		*combine_str_support(char *out, char *temp)
+char	*combine_str_support(char *out, char *temp)
 {
 	char	*del;
 	char	*out2;
@@ -27,7 +27,7 @@ char		*combine_str_support(char *out, char *temp)
 	return (out2);
 }
 
-void		do_cd(t_info *info, char *old, char *pwd, int fd[2])
+void	do_cd(t_info *info, char *old, char *pwd, int fd[2])
 {
 	char	*temp;
 
@@ -54,7 +54,7 @@ void		do_cd(t_info *info, char *old, char *pwd, int fd[2])
 	exit(10);
 }
 
-void		go_old(t_info *info, char *old, int fd[2])
+void	go_old(t_info *info, char *old, int fd[2])
 {
 	char	*pwd;
 	char	*home;
@@ -74,7 +74,7 @@ void		go_old(t_info *info, char *old, int fd[2])
 	exit(10);
 }
 
-void		go_home(t_info *info, char *old, int fd[2])
+void	go_home(t_info *info, char *old, int fd[2])
 {
 	char	*pwd;
 	char	*home;

@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:23:11 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/30 12:56:13 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:28:15 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < n)

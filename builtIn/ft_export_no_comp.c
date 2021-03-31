@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:57:50 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:15:36 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:25:02 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	**sort_env(t_info *info, int len)
 	int		i;
 	int		j;
 
-	ft_salloc((void**)&out, sizeof(char *), len);
+	ft_salloc((void **)&out, sizeof(char *), len);
 	i = -1;
 	while (++i < len)
 		out[i] = ft_strdup(info->env[i]);
@@ -69,7 +69,7 @@ static char	**sort_env(t_info *info, int len)
 	return (out);
 }
 
-void		no_comp_export(t_info *info, int fd[2])
+void	no_comp_export(t_info *info, int fd[2])
 {
 	int		env_len;
 	char	**sort;

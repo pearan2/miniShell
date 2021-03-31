@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:03:51 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/29 08:10:47 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:27:57 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*my_strjoin(char *s1, char *s2)
 	i = 0;
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	ft_salloc((void*)&out, sizeof(char), len1 + len2 + 1);
+	ft_salloc((void *)&out, sizeof(char), len1 + len2 + 1);
 	while (i < len1 + len2)
 	{
 		if (i < len1)

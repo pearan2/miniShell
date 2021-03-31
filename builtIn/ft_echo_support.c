@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 15:32:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 18:50:18 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:23:47 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_echo_finish(t_info *info, int fd[2], int tag)
+void	ft_echo_finish(t_info *info, int fd[2], int tag)
 {
 	if (!tag)
 	{
@@ -25,14 +25,14 @@ void		ft_echo_finish(t_info *info, int fd[2], int tag)
 	exit(0);
 }
 
-void		no_component_echo(int fd[2])
+void	no_component_echo(int fd[2])
 {
 	write(1, "\n", 1);
 	write(fd[1], "0\n", 2);
 	exit(0);
 }
 
-int			check_single_quote(t_info *info, int i)
+int	check_single_quote(t_info *info, int i)
 {
 	int		j;
 

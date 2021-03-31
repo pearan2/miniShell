@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:49:43 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:20:05 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_parent_exit(t_info *info, int fd[2])
+void	ft_parent_exit(t_info *info, int fd[2])
 {
 	long	stat;
 	int		sstat;
@@ -33,7 +33,7 @@ static void	support_p_cd(t_info *info, int env_num)
 	chdir(info->env[env_num] + 4);
 }
 
-void		ft_parent_cd(t_info *info, int fd[2])
+void	ft_parent_cd(t_info *info, int fd[2])
 {
 	int		i;
 	int		num_env;

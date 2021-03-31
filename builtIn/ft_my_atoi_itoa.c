@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 14:11:30 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:13:14 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:27:38 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-long		my_atoi(char *str)
+long	my_atoi(char *str)
 {
 	int		i;
 	long	out;
@@ -38,7 +38,7 @@ long		my_atoi(char *str)
 
 static void	support_itoa(long *num, int *mine, int *len)
 {
-	int num2;
+	int		num2;
 
 	num2 = *num;
 	if (*num < 0)
@@ -54,7 +54,7 @@ static void	support_itoa(long *num, int *mine, int *len)
 	}
 }
 
-char		*my_itoa(long num)
+char	*my_itoa(long num)
 {
 	int		len;
 	int		mine;
@@ -66,7 +66,7 @@ char		*my_itoa(long num)
 	len = 0;
 	mine = 0;
 	support_itoa(&num, &mine, &len);
-	ft_salloc((void*)&out, sizeof(char), len + 1);
+	ft_salloc((void *)&out, sizeof(char), len + 1);
 	i = len;
 	out[i] = '\0';
 	while (i--)

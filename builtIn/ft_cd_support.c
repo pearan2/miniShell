@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:17:48 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 19:34:07 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:22:41 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	rebase_cd(t_info *info, int i, int fd[2], char *old)
 	free(temp2);
 }
 
-void		rebase_input_cd(t_info *info, int i, int fd[2], char *old)
+void	rebase_input_cd(t_info *info, int i, int fd[2], char *old)
 {
 	int		j;
 
@@ -72,7 +72,7 @@ void		rebase_input_cd(t_info *info, int i, int fd[2], char *old)
 	}
 }
 
-int			is_can_open(char *pwd)
+int	is_can_open(char *pwd)
 {
 	DIR		*dir;
 	int		flag;

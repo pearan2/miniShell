@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:37:03 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:01:43 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:24:43 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*rebase_combine_input(char **split)
 	return (out);
 }
 
-void		rebase_input(t_info *info, int i)
+void	rebase_input(t_info *info, int i)
 {
 	char	**split;
 	char	*temp;
@@ -91,7 +91,7 @@ static void	export_error(char *str, int *tag)
 	write(2, "\': not a valid identifier\n", 26);
 }
 
-void		ft_export(t_info *info, int fd[2])
+void	ft_export(t_info *info, int fd[2])
 {
 	int		i;
 	int		flag;

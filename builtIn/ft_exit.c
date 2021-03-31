@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:21:50 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 19:20:22 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:24:20 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int		exit_support(t_info *info, int cnt)
+static int	exit_support(t_info *info, int cnt)
 {
 	int			i;
 
@@ -28,7 +28,7 @@ static int		exit_support(t_info *info, int cnt)
 	return (1);
 }
 
-static void		exit_result_support(t_info *info, int flag)
+static void	exit_result_support(t_info *info, int flag)
 {
 	if (info->is_print == 1)
 	{
@@ -50,7 +50,7 @@ static void		exit_result_support(t_info *info, int flag)
 	}
 }
 
-static void		exit_result(t_info *info, int flag, int fd[2])
+static void	exit_result(t_info *info, int flag, int fd[2])
 {
 	if (flag == 0)
 	{
@@ -79,7 +79,7 @@ static void		exit_result(t_info *info, int flag, int fd[2])
 	}
 }
 
-void			ft_exit(t_info *info, int fd[2])
+void	ft_exit(t_info *info, int fd[2])
 {
 	int			i;
 	int			flag;

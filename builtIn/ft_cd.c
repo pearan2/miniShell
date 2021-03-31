@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 07:48:57 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 20:13:12 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:22:12 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	scan_command(char *str)
 	return (99);
 }
 
-char		*combine_str2(char **pwd)
+char	*combine_str2(char **pwd)
 {
 	int		i;
 	int		len;
@@ -96,14 +96,14 @@ static char	*pasing_dir(t_info *info, char *pwd, char *temp)
 	return (out);
 }
 
-void		ft_cd(t_info *info, int fd[2])
+void	ft_cd(t_info *info, int fd[2])
 {
 	char	*old;
 	char	*pwd;
 	char	*n_pwd;
 
 	pwd = get_env(info, "PWD");
-	old = my_strjoin("OLDPWD=", pwd);	
+	old = my_strjoin("OLDPWD=", pwd);
 	if (info->opt[1] != 0)
 	{
 		rebase_input_cd(info, 1, fd, old);

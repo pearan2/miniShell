@@ -6,13 +6,13 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 15:33:21 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:11:55 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:19:36 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int			check_order(char *str)
+int	check_order(char *str)
 {
 	if (ft_strcmp(str, "echo") == 0)
 		return (1);
@@ -50,7 +50,7 @@ static void	do_child(t_info *info, int order, int fd[2])
 		ft_exit(info, fd);
 }
 
-void		do_parent(t_info *info, int status, int fd[2])
+void	do_parent(t_info *info, int status, int fd[2])
 {
 	char	*result;
 	int		gnl;
@@ -85,7 +85,7 @@ static void	ft_print_error_built(int flag)
 	}
 }
 
-int			*ft_built_in(t_info *info)
+int	*ft_built_in(t_info *info)
 {
 	int		order;
 	pid_t	pid;

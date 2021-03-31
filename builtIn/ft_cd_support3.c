@@ -6,19 +6,19 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 20:13:55 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:23:17 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_exit_cd_support3(t_info *info, char *old, int fd[2], char *pwd)
+void	ft_exit_cd_support3(t_info *info, char *old, int fd[2], char *pwd)
 {
 	free(pwd);
 	go_home(info, old, fd);
 }
 
-char		*ft_pasing_dir_support(char *pwd, char *temp)
+char	*ft_pasing_dir_support(char *pwd, char *temp)
 {
 	char	*out;
 
@@ -29,7 +29,7 @@ char		*ft_pasing_dir_support(char *pwd, char *temp)
 	return (out);
 }
 
-int			is_old_dir_flag(char *str)
+int	is_old_dir_flag(char *str)
 {
 	if (str != NULL)
 	{
@@ -44,7 +44,7 @@ int			is_old_dir_flag(char *str)
 	return (0);
 }
 
-int			is_home_dir(char *str, int *i)
+int	is_home_dir(char *str, int *i)
 {
 	if (str != NULL)
 	{
@@ -61,7 +61,7 @@ int			is_home_dir(char *str, int *i)
 	return (0);
 }
 
-char		*result_of_combine(char **p_str, char *out, char *temp,
+char	*result_of_combine(char **p_str, char *out, char *temp,
 		int flag)
 {
 	char	*del;
