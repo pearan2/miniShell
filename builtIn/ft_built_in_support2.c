@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:16:38 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:43:02 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ static void	put_env(t_info *info, char *result)
 	char	*temp2;
 
 	sp_result = ft_split(result, "=");
-	temp2 = my_strjoin(sp_result[0], "=");
-	env_num = get_env_num(info, temp2);
-	free(temp2);
+	env_num = get_env_num(info, sp_result[0]);
 	ft_split_free2(sp_result);
 	if (env_num == -1)
 	{

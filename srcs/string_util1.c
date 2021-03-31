@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:55:54 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 13:20:43 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:51:14 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**ft_copy_string_arr(char **target)
 	return (ret);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
 	while (1)
 	{
@@ -56,7 +56,7 @@ char	*ft_find_pc(char *target)
 	return (NULL);
 }
 
-int	ft_string_append(char ***target, char *value)
+int		ft_string_append(char ***target, char *value)
 {
 	char	**temp;
 	int		idx;

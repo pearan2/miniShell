@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:23:40 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:49:43 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void		ft_parent_exit(t_info *info, int fd[2])
 	get_next_line(fd[0], &result);
 	stat = my_atoi(result);
 	sstat = stat % 256;
+	if (sstat < 0)
+		sstat *= -1;
 	free(result);
 	if (info->is_print == 1)
 		exit(sstat);

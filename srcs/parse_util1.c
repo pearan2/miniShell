@@ -6,13 +6,13 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 14:09:29 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:50:57 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	init_info(t_info *info, char *od)
+int		init_info(t_info *info, char *od)
 {
 	int	fd[2];
 
@@ -74,7 +74,7 @@ void	set_stdin_info(t_info *info, char *path)
 	info->fd_stdin = open(path, O_RDONLY);
 }
 
-int	make_info(t_info *info, char **ret)
+int		make_info(t_info *info, char **ret)
 {
 	int		idx;
 	int		result;

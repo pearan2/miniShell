@@ -6,13 +6,13 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 12:39:34 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 13:11:15 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:33:46 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strlen(const char *str)
+int			ft_strlen(const char *str)
 {
 	int		ret;
 
@@ -22,7 +22,7 @@ int	ft_strlen(const char *str)
 	return (ret);
 }
 
-char	*ft_charappend2(char **target, char value)
+char		*ft_charappend2(char **target, char value)
 {
 	int		idx;
 	char	*ret;
@@ -43,7 +43,7 @@ char	*ft_charappend2(char **target, char value)
 	return (ret);
 }
 
-char	*ft_charappend(char *target, char value)
+char		*ft_charappend(char *target, char value)
 {
 	int		idx;
 	char	*ret;
@@ -63,7 +63,7 @@ char	*ft_charappend(char *target, char value)
 	return (ret);
 }
 
-int	get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	int		rb;
 	char	buff;

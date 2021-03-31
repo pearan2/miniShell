@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:35:53 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:18:51 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:43:42 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,8 @@ static void	del_env(t_info *info, char *result)
 	int		env_num;
 	int		len;
 	char	**temp;
-	char	*temp2;
 
-	temp2 = my_strjoin(result, "=");
-	env_num = get_env_num(info, temp2);
-	free(temp2);
+	env_num = get_env_num(info, result);
 	if (env_num != -1)
 	{
 		len = 0;

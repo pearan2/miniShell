@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 14:04:27 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:52:51 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ unsigned int	ft_get_cnt(char *str, char *charset)
 	}
 }
 
-int	ft_is_sep(char c, char *charset)
+int				ft_is_sep(char c, char *charset)
 {
-	int	idx;
+	int				idx;
 
 	idx = 0;
 	if (c == '\0')
@@ -48,7 +48,7 @@ int	ft_is_sep(char c, char *charset)
 	return (0);
 }
 
-void	ft_sc(char *dest, char *src, unsigned int s, unsigned int e)
+void			ft_sc(char *dest, char *src, unsigned int s, unsigned int e)
 {
 	unsigned int	idx;
 
@@ -77,7 +77,7 @@ unsigned int	ft_next(char *str, char *charset, unsigned int s, int is_sep)
 	}
 }
 
-char	**ft_split(char *str, char *charset)
+char			**ft_split(char *str, char *charset)
 {
 	char			**ret;
 	unsigned int	cnt;

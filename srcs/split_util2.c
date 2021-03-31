@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:04:56 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/22 21:05:10 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:33:27 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_split_free(char **target, unsigned int idx)
 	return (0);
 }
 
-int	ft_split_free2(char **target)
+int		ft_split_free2(char **target)
 {
 	int			idx;
 

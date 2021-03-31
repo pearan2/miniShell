@@ -6,13 +6,13 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:37:50 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 13:21:06 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:34:00 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_printable(char c)
+int		is_printable(char c)
 {
 	if (c >= 32 && c <= 127)
 		return (1);

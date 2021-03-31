@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 20:44:08 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 13:28:45 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:53:13 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_cursor_position(int *row, int *col)
 	}
 }
 
-int	ft_nbrlen(int value)
+int		ft_nbrlen(int value)
 {
 	int		ret;
 
@@ -53,13 +53,13 @@ int	ft_nbrlen(int value)
 	return (ret);
 }
 
-int	putchar_tc(int tc)
+int		putchar_tc(int tc)
 {
 	write(1, &tc, 1);
 	return (0);
 }
 
-int	get_win_col(void)
+int		get_win_col(void)
 {
 	struct winsize	w;
 

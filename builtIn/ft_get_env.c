@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 11:02:19 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:31:41 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:41:55 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int			get_env_num(t_info *info, char *str)
 	{
 		if (ft_strncmp(info->env[i], temp, ft_strlen(temp)) == 0)
 		{
-			out = i;
-			break ;
+			if (info->env[i][ft_strlen(temp)] == '=' ||
+					info->env[i][ft_strlen(temp)] == '\0')
+			{
+				out = i;
+				break ;
+			}
 		}
 		i++;
 	}

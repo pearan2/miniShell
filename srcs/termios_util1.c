@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 13:27:50 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 17:34:16 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_term(struct termios *save, struct termios *setting)
 	return ;
 }
 
-int	ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	unsigned int		ret;
 	unsigned int		is_minus;
