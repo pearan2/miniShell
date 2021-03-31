@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:21:50 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:35:23 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 19:14:28 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ static void		exit_result_support(int is_print, int flag)
 		else if (flag == 2)
 			write(2, "bash: exit: aa: numeric argument required\n", 42);
 		else if (flag == 3)
+		{
+			write(1, "exit\n", 5);
 			write(2, "bash: exit: too many arguments\n", 31);
+		}
 		else
 			write(1, "exit\n", 5);
 	}
