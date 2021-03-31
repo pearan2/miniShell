@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/30 16:17:53 by honlee           ###   ########.fr       */
+/*   Updated: 2021/03/31 13:32:05 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	init_info(t_info *info, char *od)
 	info->is_print = 0;
 	if (od == NULL || (od != NULL && *od == ';'))
 		info->is_print = 1;
-	info->built_result_num = 0;
 	return (1);
 }
 
