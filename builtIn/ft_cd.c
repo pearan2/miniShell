@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 07:48:57 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 17:58:20 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 19:32:18 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,10 @@ void		ft_cd(t_info *info, int fd[2])
 	char	*n_pwd;
 
 	pwd = get_env(info, "PWD");
-	old = my_strjoin("OLDPWD=", pwd);
+	old = my_strjoin("OLDPWD=", pwd);	
 	if (info->opt[1] != 0)
 	{
-		rebase_input_cd(info, 1);
+		rebase_input_cd(info, 1, fd, old);
 		if (is_old_dir_flag(info->opt[1]))
 		{
 			free(pwd);

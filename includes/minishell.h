@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 18:50:48 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 19:33:08 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ char				*get_env(t_info *info, char *str);
 char				*get_env_full(t_info *info, char *str);
 int					get_env_num(t_info *info, char *str);
 void				rebase_input(t_info *info, int i);
-void				rebase_input_cd(t_info *info, int i);
+void				rebase_input_cd(t_info *info, int i, int fd[2], char *old);
 void				ft_parent_exit(t_info *info, int fd[2]);
 void				ft_parent_cd(t_info *info, int fd[2]);
 void				ft_parent_export(t_info *info, int fd[2]);

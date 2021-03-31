@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:17:48 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 16:12:55 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/03/31 19:34:07 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*rebase_cd_join(char **split)
 	return (out);
 }
 
-static void	rebase_cd(t_info *info, int i)
+static void	rebase_cd(t_info *info, int i, int fd[2], char *old)
 {
 	char	**split;
 	char	*temp;
@@ -47,6 +47,8 @@ static void	rebase_cd(t_info *info, int i)
 		temp = split[j];
 		split[j] = change_input_to_env(info, split[j]);
 		free(temp);
+		if (split[0][0] == '\0')
+			go_home(info, old, fd);
 	}
 	temp = rebase_cd_join(split);
 	temp2 = info->opt[i];
@@ -54,7 +56,7 @@ static void	rebase_cd(t_info *info, int i)
 	free(temp2);
 }
 
-void		rebase_input_cd(t_info *info, int i)
+void		rebase_input_cd(t_info *info, int i, int fd[2], char *old)
 {
 	int		j;
 
@@ -63,7 +65,7 @@ void		rebase_input_cd(t_info *info, int i)
 	{
 		if (info->opt[i][j] == '$')
 		{
-			rebase_cd(info, i);
+			rebase_cd(info, i, fd, old);
 			break ;
 		}
 		j++;
