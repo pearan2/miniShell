@@ -1,0 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cd_support2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
+/*   Updated: 2021/03/31 14:04:48 by junhypar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+void		do_cd(t_info *info, char *old, char *pwd, int fd[2])
+{
+	char	*temp;
+	int		hi;
+
+	if (is_can_open(pwd))
+	{
+		free(pwd);
+		free(old);
+		write(1, "bash: cd: ", 10);
+		write(1, info->opt[1], ft_strlen(info->opt[1]));
+		write(1, ": No such file or directory\n", 28);
+		write(fd[1], "1\n", 2);
+		exit(1);
+	}
+	temp = pwd;
+	pwd = my_strjoin("PWD=", pwd);
+	free(temp);
+	write(fd[1], old, ft_strlen(old));
+	write(fd[1], "\n", 1);
+	write(fd[1], pwd, ft_strlen(pwd));
+	write(fd[1], "\n", 1);
+	write(fd[1], "0\n", 2);
+	free(pwd);
+	free(old);
+	exit(10);
+}
+
+void		go_home(t_info *info, char *old, int fd[2])
+{
+	char	*pwd;
+	char	*home;
+
+	home = get_env(info, "HOME");
+	pwd = my_strjoin("PWD=", home);
+	free(home);
+	write(fd[1], old, ft_strlen(old));
+	write(fd[1], "\n", 1);
+	write(fd[1], pwd, ft_strlen(pwd));
+	write(fd[1], "\n", 1);
+	write(fd[1], "0\n", 2);
+	free(pwd);
+	free(old);
+	exit(10);
+}
