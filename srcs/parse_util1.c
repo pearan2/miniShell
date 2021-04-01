@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/04/01 10:18:27 by honlee           ###   ########.fr       */
+/*   Updated: 2021/04/01 10:44:43 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	init_info(t_info *info, char *od)
 	pipe(fd);
 	ft_salloc((void **)&info->opt, sizeof(char *), 1);
 	(info->opt)[0] = NULL;
-	if (info->fd_stdin < 2)
+	if (info->fd_stdin < 2 || info->built_result_num != 0)
 		info->fd_stdin = -2;
 	info->fd_stdout = fd[1];
 	info->fd_stdout_r = fd[0];

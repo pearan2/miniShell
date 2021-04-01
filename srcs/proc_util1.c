@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:13:03 by honlee            #+#    #+#             */
-/*   Updated: 2021/04/01 09:40:03 by honlee           ###   ########.fr       */
+/*   Updated: 2021/04/01 10:35:56 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	proc_inner(t_info *info, char *path)
 		waitpid(pid, &status, 0);
 		g_data.is_fork = 0;
 		info->built_result_num = 0;
-		if (status / 255 != 0)
-			proc_handle_error(info, path, status / 255);
+		if (status / 256 != 0)
+			proc_handle_error(info, path, status / 256);
 		free(path);
 		return (status);
 	}
