@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:59:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/04/01 11:18:54 by honlee           ###   ########.fr       */
+/*   Updated: 2021/04/01 11:25:18 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_all(t_list_info *list_info, t_info *info,
 	put_welcome_msg();
 	put_prompt();
 	info->fd_stdin = -2;
+	info->built_result_num = 0;
 	init_term(save, setting);
 	signal(SIGQUIT, sigquit_handler);
 	signal(SIGINT, sigint_handler);
@@ -33,5 +34,4 @@ void	clear_info(t_info *info)
 	info->fd_stdin = -2;
 	info->fd_stdout = -2;
 	info->fd_stdout_r = -2;
-	info->built_result_num = 0;
 }
