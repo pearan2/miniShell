@@ -6,11 +6,37 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 15:32:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 23:23:47 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:22:31 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	print_single_doller(t_info *info, int i)
+{
+	if (info->is_print == 0)
+		write(info->fd_stdout, "$", 1);
+	else
+		write(1, "$", 1);
+	i++;
+	if (info->opt[i])
+	{
+		if (info->is_print == 0)
+			write(info->fd_stdout, " ", 1);
+		else
+			write(1, " ", 1);		
+	}	
+}
+
+int		scan_single_doller(t_info *info, int i)
+{
+	if (info->opt[i][0] == '$')
+	{
+		if (info->opt[i][1] == '\0')
+			return (1);
+	}
+	return (0);
+}
 
 void	ft_echo_finish(t_info *info, int fd[2], int tag)
 {

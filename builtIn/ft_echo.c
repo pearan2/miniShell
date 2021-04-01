@@ -6,7 +6,7 @@
 /*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:12:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 23:23:34 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:21:50 by junhypar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,15 @@ void	ft_echo(t_info *info, int fd[2])
 	{
 		flag = check_single_quote(info, i);
 		flag2 = check_flag(info, i, &tag);
-		if (!flag)
-			check_env(info, i);
-		if (!flag2)
-			ft_print_echo(info, i);
+		if (scan_signle_doller(info, i))
+			print_single_doller(info, i);
+		else
+		{
+			if (!flag)
+				check_env(info, i);
+			if (!flag2)
+				ft_print_echo(info, i);
+		}
 	}
 	ft_echo_finish(info, fd, tag);
 }
