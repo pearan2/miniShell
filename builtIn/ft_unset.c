@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 22:55:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 23:28:41 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:01:45 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	is_available(t_info *info, int i)
 static void	unset_error(char *str, int *tag)
 {
 	*tag = 1;
-	write(2, "bash: unset: \'", 14);
+	write(2, "minishell: unset: \'", 14);
 	write(2, str, ft_strlen(str));
 	write(2, "\': not a valid identifier\n", 26);
 }

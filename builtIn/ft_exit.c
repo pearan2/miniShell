@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:21:50 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 23:24:20 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:01:24 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,15 @@ static void	exit_result_support(t_info *info, int flag)
 			write(1, "exit\n", 5);
 		else if (flag == 2)
 		{
-			write(2, "bash: exit: ", 12);
+			write(1, "exit\n", 5);
+			write(2, "minishell: exit: ", 12);
 			write(2, info->opt[1], ft_strlen(info->opt[1]));
 			write(2, ": numeric argument required\n", 28);
 		}
 		else if (flag == 3)
 		{
 			write(1, "exit\n", 5);
-			write(2, "bash: exit: too many arguments\n", 31);
+			write(2, "minishell: exit: too many arguments\n", 31);
 		}
 		else
 			write(1, "exit\n", 5);

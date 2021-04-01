@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd_support2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 14:04:40 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 23:23:01 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:01:36 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	do_cd(t_info *info, char *old, char *pwd, int fd[2])
 	{
 		free(pwd);
 		free(old);
-		write(1, "bash: cd: ", 10);
+		write(1, "minishell: cd: ", 10);
 		write(1, info->opt[1], ft_strlen(info->opt[1]));
 		write(1, ": No such file or directory\n", 28);
 		write(fd[1], "1\n", 2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:37:03 by junhypar          #+#    #+#             */
-/*   Updated: 2021/03/31 23:24:43 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:01:40 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	is_available(t_info *info, int i)
 static void	export_error(char *str, int *tag)
 {
 	*tag = 1;
-	write(2, "bash: export: \'", 15);
+	write(2, "minishell: export: \'", 15);
 	write(2, str, ft_strlen(str));
 	write(2, "\': not a valid identifier\n", 26);
 }
