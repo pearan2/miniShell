@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: honlee <honlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:46:07 by honlee            #+#    #+#             */
-/*   Updated: 2021/03/31 20:51:16 by honlee           ###   ########seoul.kr  */
+/*   Updated: 2021/04/01 10:18:27 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	set_stdout_info(t_info *info, char *path, int is_append)
 	if (is_append == 0)
 		info->fd_stdout = open(path, O_WRONLY | O_CREAT, 0644);
 	else
-		info->fd_stdout = open(path, O_WRONLY | O_APPEND);
+		info->fd_stdout = open(path, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	info->is_print = 0;
 }
 
