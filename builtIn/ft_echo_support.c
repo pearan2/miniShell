@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo_support.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhypar <junhypar@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 15:32:00 by junhypar          #+#    #+#             */
-/*   Updated: 2021/04/01 10:22:31 by junhypar         ###   ########.fr       */
+/*   Updated: 2021/04/01 11:06:42 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	print_single_doller(t_info *info, int i)
 		if (info->is_print == 0)
 			write(info->fd_stdout, " ", 1);
 		else
-			write(1, " ", 1);		
+			write(1, " ", 1);
 	}	
 }
 
-int		scan_single_doller(t_info *info, int i)
+int	scan_single_doller(t_info *info, int i)
 {
 	if (info->opt[i][0] == '$')
 	{
