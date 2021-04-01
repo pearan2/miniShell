@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/22 03:13:25 by honlee            #+#    #+#             */
-/*   Updated: 2021/04/01 10:41:49 by honlee           ###   ########.fr       */
+/*   Updated: 2021/04/01 11:19:10 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,4 +181,6 @@ void				ft_exit_cd_support3(t_info *info, char *old,
 						int fd[2], char *pwd);
 int					scan_single_doller(t_info *info, int i);
 void				print_single_doller(t_info *info, int i);
+void				clear_info(t_info *info);
+
 #endif

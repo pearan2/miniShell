@@ -6,7 +6,7 @@
 /*   By: honlee <honlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 13:27:53 by honlee            #+#    #+#             */
-/*   Updated: 2021/04/01 09:54:02 by honlee           ###   ########.fr       */
+/*   Updated: 2021/04/01 11:19:57 by honlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ int	main(int ac, char **av, char **env)
 	ac = 0;
 	av = 0;
 	info.env = ft_copy_string_arr(env);
-	info.built_result_num = 0;
 	init_all(&list_info, &info, &save, &setting);
 	while (1)
 	{
+		clear_info(&info);
 		g_data.line = ft_strdup("");
 		tcsetattr(0, TCSANOW, &setting);
 		do_term_loop(&(g_data.line), &list_info);
